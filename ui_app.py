@@ -130,6 +130,7 @@ class SpeechTranslationController:
         self._log_lines: List[str] = []
         self._max_log_lines = 200
         self._state_lock = threading.Lock()
+        self._current_tts: Optional[AzureTTS] = None
 
     def start(
         self,
@@ -187,15 +188,16 @@ class SpeechTranslationController:
             self._thread.start()
             return "Initializing..."
 
-    def stop(self) -> str:
+    def _stop_pipeline(self, force: bool) -> str:
         with self._thread_lock:
             thread = self._thread
             if not thread or not thread.is_alive():
                 self._set_status("Stopped")
                 return "Already stopped"
 
-            self._set_status("Stopping...")
+            self._set_status("Hard stopping..." if force else "Stopping...")
             self._stop_event.set()
+            current_tts = self._current_tts
 
         if self._vad_stream:
             try:
@@ -205,7 +207,15 @@ class SpeechTranslationController:
             finally:
                 self._vad_stream = None
 
-        self._append_log("Stop requested by user.")
+        if force and current_tts:
+            try:
+                current_tts.stop()
+            except Exception as exc:  # pragma: no cover - defensive log
+                self._append_log(f"TTS stop error: {exc}")
+
+        self._append_log(
+            "Hard stop requested by user." if force else "Stop requested by user."
+        )
 
         if thread:
             thread.join(timeout=2.0)
@@ -219,6 +229,12 @@ class SpeechTranslationController:
         self._append_log("Pipeline stopped.")
         self._set_status("Stopped")
         return "Stopped"
+
+    def stop(self) -> str:
+        return self._stop_pipeline(force=False)
+
+    def hard_stop(self) -> str:
+        return self._stop_pipeline(force=True)
 
     def snapshot(self):
         with self._state_lock:
@@ -248,6 +264,8 @@ class SpeechTranslationController:
                 language=voice_option.locale,
                 voice_name=voice_option.short_name,
             )
+            with self._thread_lock:
+                self._current_tts = tts
 
             self._append_log(
                 "Components initialized "
@@ -297,8 +315,10 @@ class SpeechTranslationController:
             self._stop_event.clear()
             self._vad_stream = None
             self._set_status("Stopped")
-            if threading.current_thread() is self._thread:
-                self._thread = None
+            with self._thread_lock:
+                self._current_tts = None
+                if threading.current_thread() is self._thread:
+                    self._thread = None
 
     def _append_log(self, message: str) -> None:
         with self._state_lock:
@@ -357,6 +377,10 @@ def start_pipeline(
 
 def stop_pipeline():
     return controller.stop()
+
+
+def hard_stop_pipeline():
+    return controller.hard_stop()
 
 
 def refresh_outputs():
@@ -518,6 +542,7 @@ def build_interface():
         with gr.Row():
             start_button = gr.Button("Start", variant="primary")
             stop_button = gr.Button("Stop")
+            hard_stop_button = gr.Button("Hard Stop", variant="stop")
             apply_button = gr.Button("Apply & Restart")
 
         status_box = gr.Textbox(
@@ -583,6 +608,10 @@ def build_interface():
         )
         stop_button.click(
             fn=stop_pipeline,
+            outputs=status_box,
+        )
+        hard_stop_button.click(
+            fn=hard_stop_pipeline,
             outputs=status_box,
         )
         apply_button.click(
