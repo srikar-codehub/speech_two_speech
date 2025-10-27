@@ -58,7 +58,9 @@ def _matches_language(locale: str, code: str) -> bool:
     return locale_lower.split("-")[0] == code_lower.split("-")[0]
 
 
-def _build_language_options() -> Tuple[Dict[str, LanguageOption], Dict[str, VoiceOption]]:
+def _build_language_options() -> Tuple[
+    Dict[str, LanguageOption], Dict[str, VoiceOption]
+]:
     languages_data = _load_json("azure_languages.json")
     voices_data = _load_json("azure_voices.json")
 
@@ -112,7 +114,9 @@ LANGUAGE_OPTIONS, VOICES_BY_NAME = _build_language_options()
 
 
 class SpeechTranslationController:
-    def __init__(self, languages: Dict[str, LanguageOption], voices: Dict[str, VoiceOption]):
+    def __init__(
+        self, languages: Dict[str, LanguageOption], voices: Dict[str, VoiceOption]
+    ):
         self._languages = languages
         self._voices = voices
         self._thread: Optional[threading.Thread] = None
@@ -397,8 +401,7 @@ def describe_voice(short_name: Optional[str]) -> str:
     if not voice:
         return f"Voice **{short_name}** — metadata unavailable."
     return (
-        f"**{voice.short_name}** — {voice.name} "
-        f"({voice.gender}, locale {voice.locale})"
+        f"**{voice.short_name}** — {voice.name} ({voice.gender}, locale {voice.locale})"
     )
 
 
@@ -448,27 +451,20 @@ def handle_silence_change(
 
 
 def build_interface():
-    language_options = sorted(LANGUAGE_OPTIONS.values(), key=lambda opt: opt.name.lower())
+    language_options = sorted(
+        LANGUAGE_OPTIONS.values(), key=lambda opt: opt.name.lower()
+    )
     if not language_options:
         raise RuntimeError("Azure metadata did not return any languages.")
 
-    language_codes = [option.code for option in language_options]
-    language_labels = {
-        option.code: f"{option.name} ({option.native_name})"
-        if option.native_name and option.native_name.lower() != option.name.lower()
-        else option.name
-        for option in language_options
-    }
+    language_items = [(option.name, option.code) for option in language_options]
+    language_codes = [code for _, code in language_items]
 
     default_source_code = (
-        DEFAULT_SOURCE
-        if LANGUAGE_OPTIONS.get(DEFAULT_SOURCE)
-        else language_codes[0]
+        DEFAULT_SOURCE if LANGUAGE_OPTIONS.get(DEFAULT_SOURCE) else language_codes[0]
     )
     default_target_code = (
-        DEFAULT_TARGET
-        if LANGUAGE_OPTIONS.get(DEFAULT_TARGET)
-        else language_codes[0]
+        DEFAULT_TARGET if LANGUAGE_OPTIONS.get(DEFAULT_TARGET) else language_codes[0]
     )
 
     target_option = LANGUAGE_OPTIONS.get(default_target_code)
@@ -485,24 +481,25 @@ def build_interface():
 
         with gr.Row():
             source_dropdown = gr.Dropdown(
-                choices=language_codes,
+                choices=language_items,
                 value=default_source_code,
                 label="Source language (translation code)",
-                info=language_labels.get(default_source_code, ""),
+                info="",
             )
             target_dropdown = gr.Dropdown(
-                choices=language_codes,
+                choices=language_items,
                 value=default_target_code,
                 label="Target language (translation code)",
-                info=language_labels.get(default_target_code, ""),
+                info="",
             )
-            voice_dropdown = gr.Dropdown(
-                choices=voice_choices,
-                value=default_voice,
-                label="Azure neural voice",
-                info="Voices update based on target language.",
-                interactive=bool(voice_choices),
-            )
+
+        voice_dropdown = gr.Dropdown(
+            choices=voice_choices,
+            value=default_voice,
+            label="Azure neural voice",
+            info="Voices update based on target language.",
+            interactive=bool(voice_choices),
+        )
 
         with gr.Row():
             source_info = gr.Markdown(describe_language(default_source_code))
@@ -519,9 +516,9 @@ def build_interface():
         )
 
         with gr.Row():
-            start_button = gr.Button("▶️ Start", variant="primary")
-            stop_button = gr.Button("⏹️ Stop")
-            apply_button = gr.Button("🔄 Apply & Restart")
+            start_button = gr.Button("Start", variant="primary")
+            stop_button = gr.Button("Stop")
+            apply_button = gr.Button("Apply & Restart")
 
         status_box = gr.Textbox(
             label="Status",
