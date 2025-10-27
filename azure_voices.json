@@ -1,0 +1,3325 @@
+{
+  "af-ZA": [
+    {
+      "short_name": "af-ZA-AdriNeural",
+      "gender": "Female",
+      "name": "Adri"
+    },
+    {
+      "short_name": "af-ZA-WillemNeural",
+      "gender": "Male",
+      "name": "Willem"
+    }
+  ],
+  "am-ET": [
+    {
+      "short_name": "am-ET-AmehaNeural",
+      "gender": "Male",
+      "name": "Ameha"
+    },
+    {
+      "short_name": "am-ET-MekdesNeural",
+      "gender": "Female",
+      "name": "Mekdes"
+    }
+  ],
+  "ar-AE": [
+    {
+      "short_name": "ar-AE-FatimaNeural",
+      "gender": "Female",
+      "name": "Fatima"
+    },
+    {
+      "short_name": "ar-AE-HamdanNeural",
+      "gender": "Male",
+      "name": "Hamdan"
+    }
+  ],
+  "ar-BH": [
+    {
+      "short_name": "ar-BH-AliNeural",
+      "gender": "Male",
+      "name": "Ali"
+    },
+    {
+      "short_name": "ar-BH-LailaNeural",
+      "gender": "Female",
+      "name": "Laila"
+    }
+  ],
+  "ar-DZ": [
+    {
+      "short_name": "ar-DZ-AminaNeural",
+      "gender": "Female",
+      "name": "Amina"
+    },
+    {
+      "short_name": "ar-DZ-IsmaelNeural",
+      "gender": "Male",
+      "name": "Ismael"
+    }
+  ],
+  "ar-EG": [
+    {
+      "short_name": "ar-EG-SalmaNeural",
+      "gender": "Female",
+      "name": "Salma"
+    },
+    {
+      "short_name": "ar-EG-ShakirNeural",
+      "gender": "Male",
+      "name": "Shakir"
+    }
+  ],
+  "ar-IQ": [
+    {
+      "short_name": "ar-IQ-BasselNeural",
+      "gender": "Male",
+      "name": "Bassel"
+    },
+    {
+      "short_name": "ar-IQ-RanaNeural",
+      "gender": "Female",
+      "name": "Rana"
+    }
+  ],
+  "ar-JO": [
+    {
+      "short_name": "ar-JO-SanaNeural",
+      "gender": "Female",
+      "name": "Sana"
+    },
+    {
+      "short_name": "ar-JO-TaimNeural",
+      "gender": "Male",
+      "name": "Taim"
+    }
+  ],
+  "ar-KW": [
+    {
+      "short_name": "ar-KW-FahedNeural",
+      "gender": "Male",
+      "name": "Fahed"
+    },
+    {
+      "short_name": "ar-KW-NouraNeural",
+      "gender": "Female",
+      "name": "Noura"
+    }
+  ],
+  "ar-LB": [
+    {
+      "short_name": "ar-LB-LaylaNeural",
+      "gender": "Female",
+      "name": "Layla"
+    },
+    {
+      "short_name": "ar-LB-RamiNeural",
+      "gender": "Male",
+      "name": "Rami"
+    }
+  ],
+  "ar-LY": [
+    {
+      "short_name": "ar-LY-ImanNeural",
+      "gender": "Female",
+      "name": "Iman"
+    },
+    {
+      "short_name": "ar-LY-OmarNeural",
+      "gender": "Male",
+      "name": "Omar"
+    }
+  ],
+  "ar-MA": [
+    {
+      "short_name": "ar-MA-JamalNeural",
+      "gender": "Male",
+      "name": "Jamal"
+    },
+    {
+      "short_name": "ar-MA-MounaNeural",
+      "gender": "Female",
+      "name": "Mouna"
+    }
+  ],
+  "ar-OM": [
+    {
+      "short_name": "ar-OM-AbdullahNeural",
+      "gender": "Male",
+      "name": "Abdullah"
+    },
+    {
+      "short_name": "ar-OM-AyshaNeural",
+      "gender": "Female",
+      "name": "Aysha"
+    }
+  ],
+  "ar-QA": [
+    {
+      "short_name": "ar-QA-AmalNeural",
+      "gender": "Female",
+      "name": "Amal"
+    },
+    {
+      "short_name": "ar-QA-MoazNeural",
+      "gender": "Male",
+      "name": "Moaz"
+    }
+  ],
+  "ar-SA": [
+    {
+      "short_name": "ar-SA-HamedNeural",
+      "gender": "Male",
+      "name": "Hamed"
+    },
+    {
+      "short_name": "ar-SA-ZariyahNeural",
+      "gender": "Female",
+      "name": "Zariyah"
+    }
+  ],
+  "ar-SY": [
+    {
+      "short_name": "ar-SY-AmanyNeural",
+      "gender": "Female",
+      "name": "Amany"
+    },
+    {
+      "short_name": "ar-SY-LaithNeural",
+      "gender": "Male",
+      "name": "Laith"
+    }
+  ],
+  "ar-TN": [
+    {
+      "short_name": "ar-TN-HediNeural",
+      "gender": "Male",
+      "name": "Hedi"
+    },
+    {
+      "short_name": "ar-TN-ReemNeural",
+      "gender": "Female",
+      "name": "Reem"
+    }
+  ],
+  "ar-YE": [
+    {
+      "short_name": "ar-YE-MaryamNeural",
+      "gender": "Female",
+      "name": "Maryam"
+    },
+    {
+      "short_name": "ar-YE-SalehNeural",
+      "gender": "Male",
+      "name": "Saleh"
+    }
+  ],
+  "as-IN": [
+    {
+      "short_name": "as-IN-PriyomNeural",
+      "gender": "Male",
+      "name": "Priyom"
+    },
+    {
+      "short_name": "as-IN-YashicaNeural",
+      "gender": "Female",
+      "name": "Yashica"
+    }
+  ],
+  "az-AZ": [
+    {
+      "short_name": "az-AZ-BabekNeural",
+      "gender": "Male",
+      "name": "Babek"
+    },
+    {
+      "short_name": "az-AZ-BanuNeural",
+      "gender": "Female",
+      "name": "Banu"
+    }
+  ],
+  "bg-BG": [
+    {
+      "short_name": "bg-BG-BorislavNeural",
+      "gender": "Male",
+      "name": "Borislav"
+    },
+    {
+      "short_name": "bg-BG-KalinaNeural",
+      "gender": "Female",
+      "name": "Kalina"
+    }
+  ],
+  "bn-BD": [
+    {
+      "short_name": "bn-BD-NabanitaNeural",
+      "gender": "Female",
+      "name": "Nabanita"
+    },
+    {
+      "short_name": "bn-BD-PradeepNeural",
+      "gender": "Male",
+      "name": "Pradeep"
+    }
+  ],
+  "bn-IN": [
+    {
+      "short_name": "bn-IN-BashkarNeural",
+      "gender": "Male",
+      "name": "Bashkar"
+    },
+    {
+      "short_name": "bn-IN-TanishaaNeural",
+      "gender": "Female",
+      "name": "Tanishaa"
+    }
+  ],
+  "bs-BA": [
+    {
+      "short_name": "bs-BA-GoranNeural",
+      "gender": "Male",
+      "name": "Goran"
+    },
+    {
+      "short_name": "bs-BA-VesnaNeural",
+      "gender": "Female",
+      "name": "Vesna"
+    }
+  ],
+  "ca-ES": [
+    {
+      "short_name": "ca-ES-AlbaNeural",
+      "gender": "Female",
+      "name": "Alba"
+    },
+    {
+      "short_name": "ca-ES-EnricNeural",
+      "gender": "Male",
+      "name": "Enric"
+    },
+    {
+      "short_name": "ca-ES-JoanaNeural",
+      "gender": "Female",
+      "name": "Joana"
+    }
+  ],
+  "cs-CZ": [
+    {
+      "short_name": "cs-CZ-AntoninNeural",
+      "gender": "Male",
+      "name": "Antonin"
+    },
+    {
+      "short_name": "cs-CZ-VlastaNeural",
+      "gender": "Female",
+      "name": "Vlasta"
+    }
+  ],
+  "cy-GB": [
+    {
+      "short_name": "cy-GB-AledNeural",
+      "gender": "Male",
+      "name": "Aled"
+    },
+    {
+      "short_name": "cy-GB-NiaNeural",
+      "gender": "Female",
+      "name": "Nia"
+    }
+  ],
+  "da-DK": [
+    {
+      "short_name": "da-DK-ChristelNeural",
+      "gender": "Female",
+      "name": "Christel"
+    },
+    {
+      "short_name": "da-DK-JeppeNeural",
+      "gender": "Male",
+      "name": "Jeppe"
+    }
+  ],
+  "de-AT": [
+    {
+      "short_name": "de-AT-IngridNeural",
+      "gender": "Female",
+      "name": "Ingrid"
+    },
+    {
+      "short_name": "de-AT-JonasNeural",
+      "gender": "Male",
+      "name": "Jonas"
+    }
+  ],
+  "de-CH": [
+    {
+      "short_name": "de-CH-JanNeural",
+      "gender": "Male",
+      "name": "Jan"
+    },
+    {
+      "short_name": "de-CH-LeniNeural",
+      "gender": "Female",
+      "name": "Leni"
+    }
+  ],
+  "de-DE": [
+    {
+      "short_name": "de-DE-AmalaNeural",
+      "gender": "Female",
+      "name": "Amala"
+    },
+    {
+      "short_name": "de-DE-BerndNeural",
+      "gender": "Male",
+      "name": "Bernd"
+    },
+    {
+      "short_name": "de-DE-ChristophNeural",
+      "gender": "Male",
+      "name": "Christoph"
+    },
+    {
+      "short_name": "de-DE-ConradNeural",
+      "gender": "Male",
+      "name": "Conrad"
+    },
+    {
+      "short_name": "de-DE-ElkeNeural",
+      "gender": "Female",
+      "name": "Elke"
+    },
+    {
+      "short_name": "de-DE-Florian:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Florian Dragon HD Latest"
+    },
+    {
+      "short_name": "de-DE-FlorianMultilingualNeural",
+      "gender": "Male",
+      "name": "Florian Multilingual"
+    },
+    {
+      "short_name": "de-DE-GiselaNeural",
+      "gender": "Female",
+      "name": "Gisela"
+    },
+    {
+      "short_name": "de-DE-KasperNeural",
+      "gender": "Male",
+      "name": "Kasper"
+    },
+    {
+      "short_name": "de-DE-KatjaNeural",
+      "gender": "Female",
+      "name": "Katja"
+    },
+    {
+      "short_name": "de-DE-KillianNeural",
+      "gender": "Male",
+      "name": "Killian"
+    },
+    {
+      "short_name": "de-DE-KlarissaNeural",
+      "gender": "Female",
+      "name": "Klarissa"
+    },
+    {
+      "short_name": "de-DE-KlausNeural",
+      "gender": "Male",
+      "name": "Klaus"
+    },
+    {
+      "short_name": "de-DE-LouisaNeural",
+      "gender": "Female",
+      "name": "Louisa"
+    },
+    {
+      "short_name": "de-DE-MajaNeural",
+      "gender": "Female",
+      "name": "Maja"
+    },
+    {
+      "short_name": "de-DE-RalfNeural",
+      "gender": "Male",
+      "name": "Ralf"
+    },
+    {
+      "short_name": "de-DE-Seraphina:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Seraphina Dragon HD Latest"
+    },
+    {
+      "short_name": "de-DE-SeraphinaMultilingualNeural",
+      "gender": "Female",
+      "name": "Seraphina Multilingual"
+    },
+    {
+      "short_name": "de-DE-TanjaNeural",
+      "gender": "Female",
+      "name": "Tanja"
+    }
+  ],
+  "el-GR": [
+    {
+      "short_name": "el-GR-AthinaNeural",
+      "gender": "Female",
+      "name": "Athina"
+    },
+    {
+      "short_name": "el-GR-NestorasNeural",
+      "gender": "Male",
+      "name": "Nestoras"
+    }
+  ],
+  "en-AU": [
+    {
+      "short_name": "en-AU-AnnetteNeural",
+      "gender": "Female",
+      "name": "Annette"
+    },
+    {
+      "short_name": "en-AU-CarlyNeural",
+      "gender": "Female",
+      "name": "Carly"
+    },
+    {
+      "short_name": "en-AU-DarrenNeural",
+      "gender": "Male",
+      "name": "Darren"
+    },
+    {
+      "short_name": "en-AU-DuncanNeural",
+      "gender": "Male",
+      "name": "Duncan"
+    },
+    {
+      "short_name": "en-AU-ElsieNeural",
+      "gender": "Female",
+      "name": "Elsie"
+    },
+    {
+      "short_name": "en-AU-FreyaNeural",
+      "gender": "Female",
+      "name": "Freya"
+    },
+    {
+      "short_name": "en-AU-JoanneNeural",
+      "gender": "Female",
+      "name": "Joanne"
+    },
+    {
+      "short_name": "en-AU-KenNeural",
+      "gender": "Male",
+      "name": "Ken"
+    },
+    {
+      "short_name": "en-AU-KimNeural",
+      "gender": "Female",
+      "name": "Kim"
+    },
+    {
+      "short_name": "en-AU-NatashaNeural",
+      "gender": "Female",
+      "name": "Natasha"
+    },
+    {
+      "short_name": "en-AU-NeilNeural",
+      "gender": "Male",
+      "name": "Neil"
+    },
+    {
+      "short_name": "en-AU-TimNeural",
+      "gender": "Male",
+      "name": "Tim"
+    },
+    {
+      "short_name": "en-AU-TinaNeural",
+      "gender": "Female",
+      "name": "Tina"
+    },
+    {
+      "short_name": "en-AU-WilliamMultilingualNeural",
+      "gender": "Male",
+      "name": "William Multilingual"
+    },
+    {
+      "short_name": "en-AU-WilliamNeural",
+      "gender": "Male",
+      "name": "William"
+    }
+  ],
+  "en-CA": [
+    {
+      "short_name": "en-CA-ClaraNeural",
+      "gender": "Female",
+      "name": "Clara"
+    },
+    {
+      "short_name": "en-CA-LiamNeural",
+      "gender": "Male",
+      "name": "Liam"
+    }
+  ],
+  "en-GB": [
+    {
+      "short_name": "en-GB-AbbiNeural",
+      "gender": "Female",
+      "name": "Abbi"
+    },
+    {
+      "short_name": "en-GB-AdaMultilingualNeural",
+      "gender": "Female",
+      "name": "Ada Multilingual"
+    },
+    {
+      "short_name": "en-GB-AlfieNeural",
+      "gender": "Male",
+      "name": "Alfie"
+    },
+    {
+      "short_name": "en-GB-BellaNeural",
+      "gender": "Female",
+      "name": "Bella"
+    },
+    {
+      "short_name": "en-GB-ElliotNeural",
+      "gender": "Male",
+      "name": "Elliot"
+    },
+    {
+      "short_name": "en-GB-EthanNeural",
+      "gender": "Male",
+      "name": "Ethan"
+    },
+    {
+      "short_name": "en-GB-HollieNeural",
+      "gender": "Female",
+      "name": "Hollie"
+    },
+    {
+      "short_name": "en-GB-LibbyNeural",
+      "gender": "Female",
+      "name": "Libby"
+    },
+    {
+      "short_name": "en-GB-MaisieNeural",
+      "gender": "Female",
+      "name": "Maisie"
+    },
+    {
+      "short_name": "en-GB-MiaNeural",
+      "gender": "Female",
+      "name": "Mia"
+    },
+    {
+      "short_name": "en-GB-NoahNeural",
+      "gender": "Male",
+      "name": "Noah"
+    },
+    {
+      "short_name": "en-GB-OliverNeural",
+      "gender": "Male",
+      "name": "Oliver"
+    },
+    {
+      "short_name": "en-GB-OliviaNeural",
+      "gender": "Female",
+      "name": "Olivia"
+    },
+    {
+      "short_name": "en-GB-OllieMultilingualNeural",
+      "gender": "Male",
+      "name": "Ollie Multilingual"
+    },
+    {
+      "short_name": "en-GB-RyanNeural",
+      "gender": "Male",
+      "name": "Ryan"
+    },
+    {
+      "short_name": "en-GB-SoniaNeural",
+      "gender": "Female",
+      "name": "Sonia"
+    },
+    {
+      "short_name": "en-GB-ThomasNeural",
+      "gender": "Male",
+      "name": "Thomas"
+    }
+  ],
+  "en-HK": [
+    {
+      "short_name": "en-HK-SamNeural",
+      "gender": "Male",
+      "name": "Sam"
+    },
+    {
+      "short_name": "en-HK-YanNeural",
+      "gender": "Female",
+      "name": "Yan"
+    }
+  ],
+  "en-IE": [
+    {
+      "short_name": "en-IE-ConnorNeural",
+      "gender": "Male",
+      "name": "Connor"
+    },
+    {
+      "short_name": "en-IE-EmilyNeural",
+      "gender": "Female",
+      "name": "Emily"
+    }
+  ],
+  "en-IN": [
+    {
+      "short_name": "en-IN-AaravNeural",
+      "gender": "Male",
+      "name": "Aarav"
+    },
+    {
+      "short_name": "en-IN-AartiIndicNeural",
+      "gender": "Female",
+      "name": "Aarti Indic"
+    },
+    {
+      "short_name": "en-IN-AartiNeural",
+      "gender": "Female",
+      "name": "Aarti"
+    },
+    {
+      "short_name": "en-IN-AashiNeural",
+      "gender": "Female",
+      "name": "Aashi"
+    },
+    {
+      "short_name": "en-IN-AnanyaNeural",
+      "gender": "Female",
+      "name": "Ananya"
+    },
+    {
+      "short_name": "en-IN-ArjunIndicNeural",
+      "gender": "Male",
+      "name": "Arjun Indic"
+    },
+    {
+      "short_name": "en-IN-ArjunNeural",
+      "gender": "Male",
+      "name": "Arjun"
+    },
+    {
+      "short_name": "en-IN-KavyaNeural",
+      "gender": "Female",
+      "name": "Kavya"
+    },
+    {
+      "short_name": "en-IN-KunalNeural",
+      "gender": "Male",
+      "name": "Kunal"
+    },
+    {
+      "short_name": "en-IN-NeerjaIndicNeural",
+      "gender": "Female",
+      "name": "Neerja Indic"
+    },
+    {
+      "short_name": "en-IN-NeerjaNeural",
+      "gender": "Female",
+      "name": "Neerja"
+    },
+    {
+      "short_name": "en-IN-PrabhatIndicNeural",
+      "gender": "Male",
+      "name": "Prabhat Indic"
+    },
+    {
+      "short_name": "en-IN-PrabhatNeural",
+      "gender": "Male",
+      "name": "Prabhat"
+    },
+    {
+      "short_name": "en-IN-RehaanNeural",
+      "gender": "Male",
+      "name": "Rehaan"
+    }
+  ],
+  "en-KE": [
+    {
+      "short_name": "en-KE-AsiliaNeural",
+      "gender": "Female",
+      "name": "Asilia"
+    },
+    {
+      "short_name": "en-KE-ChilembaNeural",
+      "gender": "Male",
+      "name": "Chilemba"
+    }
+  ],
+  "en-NG": [
+    {
+      "short_name": "en-NG-AbeoNeural",
+      "gender": "Male",
+      "name": "Abeo"
+    },
+    {
+      "short_name": "en-NG-EzinneNeural",
+      "gender": "Female",
+      "name": "Ezinne"
+    }
+  ],
+  "en-NZ": [
+    {
+      "short_name": "en-NZ-MitchellNeural",
+      "gender": "Male",
+      "name": "Mitchell"
+    },
+    {
+      "short_name": "en-NZ-MollyNeural",
+      "gender": "Female",
+      "name": "Molly"
+    }
+  ],
+  "en-PH": [
+    {
+      "short_name": "en-PH-JamesNeural",
+      "gender": "Male",
+      "name": "James"
+    },
+    {
+      "short_name": "en-PH-RosaNeural",
+      "gender": "Female",
+      "name": "Rosa"
+    }
+  ],
+  "en-SG": [
+    {
+      "short_name": "en-SG-LunaNeural",
+      "gender": "Female",
+      "name": "Luna"
+    },
+    {
+      "short_name": "en-SG-WayneNeural",
+      "gender": "Male",
+      "name": "Wayne"
+    }
+  ],
+  "en-TZ": [
+    {
+      "short_name": "en-TZ-ElimuNeural",
+      "gender": "Male",
+      "name": "Elimu"
+    },
+    {
+      "short_name": "en-TZ-ImaniNeural",
+      "gender": "Female",
+      "name": "Imani"
+    }
+  ],
+  "en-US": [
+    {
+      "short_name": "en-US-Adam:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Adam Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-AdamMultilingualNeural",
+      "gender": "Male",
+      "name": "Adam Multilingual"
+    },
+    {
+      "short_name": "en-US-AIGenerate1Neural",
+      "gender": "Male",
+      "name": "AIGenerate1"
+    },
+    {
+      "short_name": "en-US-AIGenerate2Neural",
+      "gender": "Female",
+      "name": "AIGenerate2"
+    },
+    {
+      "short_name": "en-US-Alloy:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Alloy Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-AlloyTurboMultilingualNeural",
+      "gender": "Male",
+      "name": "Alloy Turbo Multilingual"
+    },
+    {
+      "short_name": "en-US-AmandaMultilingualNeural",
+      "gender": "Female",
+      "name": "Amanda Multilingual"
+    },
+    {
+      "short_name": "en-US-AmberNeural",
+      "gender": "Female",
+      "name": "Amber"
+    },
+    {
+      "short_name": "en-US-AnaNeural",
+      "gender": "Female",
+      "name": "Ana"
+    },
+    {
+      "short_name": "en-US-Andrew2:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Andrew2 Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-Andrew3:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Andrew3 Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-Andrew:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Andrew Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-AndrewMultilingualNeural",
+      "gender": "Male",
+      "name": "Andrew Multilingual"
+    },
+    {
+      "short_name": "en-US-AndrewNeural",
+      "gender": "Male",
+      "name": "Andrew"
+    },
+    {
+      "short_name": "en-US-Aria:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Aria Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-AriaNeural",
+      "gender": "Female",
+      "name": "Aria"
+    },
+    {
+      "short_name": "en-US-AshleyNeural",
+      "gender": "Female",
+      "name": "Ashley"
+    },
+    {
+      "short_name": "en-US-AshTurboMultilingualNeural",
+      "gender": "Male",
+      "name": "Ash Turbo Multilingual"
+    },
+    {
+      "short_name": "en-US-Ava3:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Ava3 Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-Ava:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Ava Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-AvaMultilingualNeural",
+      "gender": "Female",
+      "name": "Ava Multilingual"
+    },
+    {
+      "short_name": "en-US-AvaNeural",
+      "gender": "Female",
+      "name": "Ava"
+    },
+    {
+      "short_name": "en-US-BlueNeural",
+      "gender": "Neutral",
+      "name": "Blue"
+    },
+    {
+      "short_name": "en-US-BrandonMultilingualNeural",
+      "gender": "Male",
+      "name": "Brandon Multilingual"
+    },
+    {
+      "short_name": "en-US-BrandonNeural",
+      "gender": "Male",
+      "name": "Brandon"
+    },
+    {
+      "short_name": "en-US-Bree:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Bree Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-Brian:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Brian Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-BrianMultilingualNeural",
+      "gender": "Male",
+      "name": "Brian Multilingual"
+    },
+    {
+      "short_name": "en-US-BrianNeural",
+      "gender": "Male",
+      "name": "Brian"
+    },
+    {
+      "short_name": "en-US-ChristopherMultilingualNeural",
+      "gender": "Male",
+      "name": "Christopher Multilingual"
+    },
+    {
+      "short_name": "en-US-ChristopherNeural",
+      "gender": "Male",
+      "name": "Christopher"
+    },
+    {
+      "short_name": "en-US-CoraMultilingualNeural",
+      "gender": "Female",
+      "name": "Cora Multilingual"
+    },
+    {
+      "short_name": "en-US-CoraNeural",
+      "gender": "Female",
+      "name": "Cora"
+    },
+    {
+      "short_name": "en-US-Davis:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Davis Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-DavisMultilingualNeural",
+      "gender": "Male",
+      "name": "Davis Multilingual"
+    },
+    {
+      "short_name": "en-US-DavisNeural",
+      "gender": "Male",
+      "name": "Davis"
+    },
+    {
+      "short_name": "en-US-DerekMultilingualNeural",
+      "gender": "Male",
+      "name": "Derek Multilingual"
+    },
+    {
+      "short_name": "en-US-DustinMultilingualNeural",
+      "gender": "Male",
+      "name": "Dustin Multilingual"
+    },
+    {
+      "short_name": "en-US-EchoTurboMultilingualNeural",
+      "gender": "Male",
+      "name": "Echo Turbo Multilingual"
+    },
+    {
+      "short_name": "en-US-ElizabethNeural",
+      "gender": "Female",
+      "name": "Elizabeth"
+    },
+    {
+      "short_name": "en-US-Emma2:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Emma2 Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-Emma:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Emma Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-EmmaMultilingualNeural",
+      "gender": "Female",
+      "name": "Emma Multilingual"
+    },
+    {
+      "short_name": "en-US-EmmaNeural",
+      "gender": "Female",
+      "name": "Emma"
+    },
+    {
+      "short_name": "en-US-EricNeural",
+      "gender": "Male",
+      "name": "Eric"
+    },
+    {
+      "short_name": "en-US-EvelynMultilingualNeural",
+      "gender": "Female",
+      "name": "Evelyn Multilingual"
+    },
+    {
+      "short_name": "en-US-FableTurboMultilingualNeural",
+      "gender": "Neutral",
+      "name": "Fable Turbo Multilingual"
+    },
+    {
+      "short_name": "en-US-GuyNeural",
+      "gender": "Male",
+      "name": "Guy"
+    },
+    {
+      "short_name": "en-US-JacobNeural",
+      "gender": "Male",
+      "name": "Jacob"
+    },
+    {
+      "short_name": "en-US-Jane:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Jane Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-JaneNeural",
+      "gender": "Female",
+      "name": "Jane"
+    },
+    {
+      "short_name": "en-US-JasonNeural",
+      "gender": "Male",
+      "name": "Jason"
+    },
+    {
+      "short_name": "en-US-Jenny:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Jenny Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-JennyMultilingualNeural",
+      "gender": "Female",
+      "name": "Jenny Multilingual"
+    },
+    {
+      "short_name": "en-US-JennyNeural",
+      "gender": "Female",
+      "name": "Jenny"
+    },
+    {
+      "short_name": "en-US-KaiNeural",
+      "gender": "Male",
+      "name": "Kai"
+    },
+    {
+      "short_name": "en-US-LewisMultilingualNeural",
+      "gender": "Male",
+      "name": "Lewis Multilingual"
+    },
+    {
+      "short_name": "en-US-LolaMultilingualNeural",
+      "gender": "Female",
+      "name": "Lola Multilingual"
+    },
+    {
+      "short_name": "en-US-LunaNeural",
+      "gender": "Female",
+      "name": "Luna"
+    },
+    {
+      "short_name": "en-US-MichelleNeural",
+      "gender": "Female",
+      "name": "Michelle"
+    },
+    {
+      "short_name": "en-US-MonicaNeural",
+      "gender": "Female",
+      "name": "Monica"
+    },
+    {
+      "short_name": "en-US-MultiTalker-Ava-Andrew:DragonHDLatestNeural",
+      "gender": "Neutral",
+      "name": "Ava & Andrew MultiTalker Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-MultiTalker-Ava-Steffan:DragonHDLatestNeural",
+      "gender": "Neutral",
+      "name": "Ava & Steffan MultiTalker Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-NancyMultilingualNeural",
+      "gender": "Female",
+      "name": "Nancy Multilingual"
+    },
+    {
+      "short_name": "en-US-NancyNeural",
+      "gender": "Female",
+      "name": "Nancy"
+    },
+    {
+      "short_name": "en-US-Nova:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Nova Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-NovaTurboMultilingualNeural",
+      "gender": "Female",
+      "name": "Nova Turbo Multilingual"
+    },
+    {
+      "short_name": "en-US-OnyxTurboMultilingualNeural",
+      "gender": "Male",
+      "name": "Onyx Turbo Multilingual"
+    },
+    {
+      "short_name": "en-US-Phoebe:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Phoebe Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-PhoebeMultilingualNeural",
+      "gender": "Female",
+      "name": "Phoebe Multilingual"
+    },
+    {
+      "short_name": "en-US-RogerNeural",
+      "gender": "Male",
+      "name": "Roger"
+    },
+    {
+      "short_name": "en-US-RyanMultilingualNeural",
+      "gender": "Male",
+      "name": "Ryan Multilingual"
+    },
+    {
+      "short_name": "en-US-SamuelMultilingualNeural",
+      "gender": "Male",
+      "name": "Samuel Multilingual"
+    },
+    {
+      "short_name": "en-US-SaraNeural",
+      "gender": "Female",
+      "name": "Sara"
+    },
+    {
+      "short_name": "en-US-Serena:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Serena Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-SerenaMultilingualNeural",
+      "gender": "Female",
+      "name": "Serena Multilingual"
+    },
+    {
+      "short_name": "en-US-ShimmerTurboMultilingualNeural",
+      "gender": "Female",
+      "name": "Shimmer Turbo Multilingual"
+    },
+    {
+      "short_name": "en-US-Steffan:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Steffan Dragon HD Latest"
+    },
+    {
+      "short_name": "en-US-SteffanMultilingualNeural",
+      "gender": "Male",
+      "name": "Steffan Multilingual"
+    },
+    {
+      "short_name": "en-US-SteffanNeural",
+      "gender": "Male",
+      "name": "Steffan"
+    },
+    {
+      "short_name": "en-US-TonyNeural",
+      "gender": "Male",
+      "name": "Tony"
+    }
+  ],
+  "en-ZA": [
+    {
+      "short_name": "en-ZA-LeahNeural",
+      "gender": "Female",
+      "name": "Leah"
+    },
+    {
+      "short_name": "en-ZA-LukeNeural",
+      "gender": "Male",
+      "name": "Luke"
+    }
+  ],
+  "es-AR": [
+    {
+      "short_name": "es-AR-ElenaNeural",
+      "gender": "Female",
+      "name": "Elena"
+    },
+    {
+      "short_name": "es-AR-TomasNeural",
+      "gender": "Male",
+      "name": "Tomas"
+    }
+  ],
+  "es-BO": [
+    {
+      "short_name": "es-BO-MarceloNeural",
+      "gender": "Male",
+      "name": "Marcelo"
+    },
+    {
+      "short_name": "es-BO-SofiaNeural",
+      "gender": "Female",
+      "name": "Sofia"
+    }
+  ],
+  "es-CL": [
+    {
+      "short_name": "es-CL-CatalinaNeural",
+      "gender": "Female",
+      "name": "Catalina"
+    },
+    {
+      "short_name": "es-CL-LorenzoNeural",
+      "gender": "Male",
+      "name": "Lorenzo"
+    }
+  ],
+  "es-CO": [
+    {
+      "short_name": "es-CO-GonzaloNeural",
+      "gender": "Male",
+      "name": "Gonzalo"
+    },
+    {
+      "short_name": "es-CO-SalomeNeural",
+      "gender": "Female",
+      "name": "Salome"
+    }
+  ],
+  "es-CR": [
+    {
+      "short_name": "es-CR-JuanNeural",
+      "gender": "Male",
+      "name": "Juan"
+    },
+    {
+      "short_name": "es-CR-MariaNeural",
+      "gender": "Female",
+      "name": "Maria"
+    }
+  ],
+  "es-CU": [
+    {
+      "short_name": "es-CU-BelkysNeural",
+      "gender": "Female",
+      "name": "Belkys"
+    },
+    {
+      "short_name": "es-CU-ManuelNeural",
+      "gender": "Male",
+      "name": "Manuel"
+    }
+  ],
+  "es-DO": [
+    {
+      "short_name": "es-DO-EmilioNeural",
+      "gender": "Male",
+      "name": "Emilio"
+    },
+    {
+      "short_name": "es-DO-RamonaNeural",
+      "gender": "Female",
+      "name": "Ramona"
+    }
+  ],
+  "es-EC": [
+    {
+      "short_name": "es-EC-AndreaNeural",
+      "gender": "Female",
+      "name": "Andrea"
+    },
+    {
+      "short_name": "es-EC-LuisNeural",
+      "gender": "Male",
+      "name": "Luis"
+    }
+  ],
+  "es-ES": [
+    {
+      "short_name": "es-ES-AbrilNeural",
+      "gender": "Female",
+      "name": "Abril"
+    },
+    {
+      "short_name": "es-ES-AlvaroNeural",
+      "gender": "Male",
+      "name": "Alvaro"
+    },
+    {
+      "short_name": "es-ES-ArabellaMultilingualNeural",
+      "gender": "Female",
+      "name": "Arabella Multilingual"
+    },
+    {
+      "short_name": "es-ES-ArnauNeural",
+      "gender": "Male",
+      "name": "Arnau"
+    },
+    {
+      "short_name": "es-ES-DarioNeural",
+      "gender": "Male",
+      "name": "Dario"
+    },
+    {
+      "short_name": "es-ES-EliasNeural",
+      "gender": "Male",
+      "name": "Elias"
+    },
+    {
+      "short_name": "es-ES-ElviraNeural",
+      "gender": "Female",
+      "name": "Elvira"
+    },
+    {
+      "short_name": "es-ES-EstrellaNeural",
+      "gender": "Female",
+      "name": "Estrella"
+    },
+    {
+      "short_name": "es-ES-IreneNeural",
+      "gender": "Female",
+      "name": "Irene"
+    },
+    {
+      "short_name": "es-ES-IsidoraMultilingualNeural",
+      "gender": "Female",
+      "name": "Isidora Multilingual"
+    },
+    {
+      "short_name": "es-ES-LaiaNeural",
+      "gender": "Female",
+      "name": "Laia"
+    },
+    {
+      "short_name": "es-ES-LiaNeural",
+      "gender": "Female",
+      "name": "Lia"
+    },
+    {
+      "short_name": "es-ES-NilNeural",
+      "gender": "Male",
+      "name": "Nil"
+    },
+    {
+      "short_name": "es-ES-SaulNeural",
+      "gender": "Male",
+      "name": "Saul"
+    },
+    {
+      "short_name": "es-ES-TeoNeural",
+      "gender": "Male",
+      "name": "Teo"
+    },
+    {
+      "short_name": "es-ES-TrianaNeural",
+      "gender": "Female",
+      "name": "Triana"
+    },
+    {
+      "short_name": "es-ES-Tristan:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Tristan Dragon HD Latest"
+    },
+    {
+      "short_name": "es-ES-TristanMultilingualNeural",
+      "gender": "Male",
+      "name": "Tristan Multilingual"
+    },
+    {
+      "short_name": "es-ES-VeraNeural",
+      "gender": "Female",
+      "name": "Vera"
+    },
+    {
+      "short_name": "es-ES-Ximena:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Ximena Dragon HD Latest"
+    },
+    {
+      "short_name": "es-ES-XimenaMultilingualNeural",
+      "gender": "Female",
+      "name": "Ximena Multilingual"
+    },
+    {
+      "short_name": "es-ES-XimenaNeural",
+      "gender": "Female",
+      "name": "Ximena"
+    }
+  ],
+  "es-GQ": [
+    {
+      "short_name": "es-GQ-JavierNeural",
+      "gender": "Male",
+      "name": "Javier"
+    },
+    {
+      "short_name": "es-GQ-TeresaNeural",
+      "gender": "Female",
+      "name": "Teresa"
+    }
+  ],
+  "es-GT": [
+    {
+      "short_name": "es-GT-AndresNeural",
+      "gender": "Male",
+      "name": "Andres"
+    },
+    {
+      "short_name": "es-GT-MartaNeural",
+      "gender": "Female",
+      "name": "Marta"
+    }
+  ],
+  "es-HN": [
+    {
+      "short_name": "es-HN-CarlosNeural",
+      "gender": "Male",
+      "name": "Carlos"
+    },
+    {
+      "short_name": "es-HN-KarlaNeural",
+      "gender": "Female",
+      "name": "Karla"
+    }
+  ],
+  "es-MX": [
+    {
+      "short_name": "es-MX-BeatrizNeural",
+      "gender": "Female",
+      "name": "Beatriz"
+    },
+    {
+      "short_name": "es-MX-CandelaNeural",
+      "gender": "Female",
+      "name": "Candela"
+    },
+    {
+      "short_name": "es-MX-CarlotaNeural",
+      "gender": "Female",
+      "name": "Carlota"
+    },
+    {
+      "short_name": "es-MX-CecilioNeural",
+      "gender": "Male",
+      "name": "Cecilio"
+    },
+    {
+      "short_name": "es-MX-DaliaMultilingualNeural",
+      "gender": "Female",
+      "name": "Dalia Multilingual"
+    },
+    {
+      "short_name": "es-MX-DaliaNeural",
+      "gender": "Female",
+      "name": "Dalia"
+    },
+    {
+      "short_name": "es-MX-GerardoNeural",
+      "gender": "Male",
+      "name": "Gerardo"
+    },
+    {
+      "short_name": "es-MX-JorgeMultilingualNeural",
+      "gender": "Male",
+      "name": "Jorge Multilingual"
+    },
+    {
+      "short_name": "es-MX-JorgeNeural",
+      "gender": "Male",
+      "name": "Jorge"
+    },
+    {
+      "short_name": "es-MX-LarissaNeural",
+      "gender": "Female",
+      "name": "Larissa"
+    },
+    {
+      "short_name": "es-MX-LibertoNeural",
+      "gender": "Male",
+      "name": "Liberto"
+    },
+    {
+      "short_name": "es-MX-LucianoNeural",
+      "gender": "Male",
+      "name": "Luciano"
+    },
+    {
+      "short_name": "es-MX-MarinaNeural",
+      "gender": "Female",
+      "name": "Marina"
+    },
+    {
+      "short_name": "es-MX-NuriaNeural",
+      "gender": "Female",
+      "name": "Nuria"
+    },
+    {
+      "short_name": "es-MX-PelayoNeural",
+      "gender": "Male",
+      "name": "Pelayo"
+    },
+    {
+      "short_name": "es-MX-RenataNeural",
+      "gender": "Female",
+      "name": "Renata"
+    },
+    {
+      "short_name": "es-MX-YagoNeural",
+      "gender": "Male",
+      "name": "Yago"
+    }
+  ],
+  "es-NI": [
+    {
+      "short_name": "es-NI-FedericoNeural",
+      "gender": "Male",
+      "name": "Federico"
+    },
+    {
+      "short_name": "es-NI-YolandaNeural",
+      "gender": "Female",
+      "name": "Yolanda"
+    }
+  ],
+  "es-PA": [
+    {
+      "short_name": "es-PA-MargaritaNeural",
+      "gender": "Female",
+      "name": "Margarita"
+    },
+    {
+      "short_name": "es-PA-RobertoNeural",
+      "gender": "Male",
+      "name": "Roberto"
+    }
+  ],
+  "es-PE": [
+    {
+      "short_name": "es-PE-AlexNeural",
+      "gender": "Male",
+      "name": "Alex"
+    },
+    {
+      "short_name": "es-PE-CamilaNeural",
+      "gender": "Female",
+      "name": "Camila"
+    }
+  ],
+  "es-PR": [
+    {
+      "short_name": "es-PR-KarinaNeural",
+      "gender": "Female",
+      "name": "Karina"
+    },
+    {
+      "short_name": "es-PR-VictorNeural",
+      "gender": "Male",
+      "name": "Victor"
+    }
+  ],
+  "es-PY": [
+    {
+      "short_name": "es-PY-MarioNeural",
+      "gender": "Male",
+      "name": "Mario"
+    },
+    {
+      "short_name": "es-PY-TaniaNeural",
+      "gender": "Female",
+      "name": "Tania"
+    }
+  ],
+  "es-SV": [
+    {
+      "short_name": "es-SV-LorenaNeural",
+      "gender": "Female",
+      "name": "Lorena"
+    },
+    {
+      "short_name": "es-SV-RodrigoNeural",
+      "gender": "Male",
+      "name": "Rodrigo"
+    }
+  ],
+  "es-US": [
+    {
+      "short_name": "es-US-AlonsoNeural",
+      "gender": "Male",
+      "name": "Alonso"
+    },
+    {
+      "short_name": "es-US-PalomaNeural",
+      "gender": "Female",
+      "name": "Paloma"
+    }
+  ],
+  "es-UY": [
+    {
+      "short_name": "es-UY-MateoNeural",
+      "gender": "Male",
+      "name": "Mateo"
+    },
+    {
+      "short_name": "es-UY-ValentinaNeural",
+      "gender": "Female",
+      "name": "Valentina"
+    }
+  ],
+  "es-VE": [
+    {
+      "short_name": "es-VE-PaolaNeural",
+      "gender": "Female",
+      "name": "Paola"
+    },
+    {
+      "short_name": "es-VE-SebastianNeural",
+      "gender": "Male",
+      "name": "Sebastian"
+    }
+  ],
+  "et-EE": [
+    {
+      "short_name": "et-EE-AnuNeural",
+      "gender": "Female",
+      "name": "Anu"
+    },
+    {
+      "short_name": "et-EE-KertNeural",
+      "gender": "Male",
+      "name": "Kert"
+    }
+  ],
+  "eu-ES": [
+    {
+      "short_name": "eu-ES-AinhoaNeural",
+      "gender": "Female",
+      "name": "Ainhoa"
+    },
+    {
+      "short_name": "eu-ES-AnderNeural",
+      "gender": "Male",
+      "name": "Ander"
+    }
+  ],
+  "fa-IR": [
+    {
+      "short_name": "fa-IR-DilaraNeural",
+      "gender": "Female",
+      "name": "Dilara"
+    },
+    {
+      "short_name": "fa-IR-FaridNeural",
+      "gender": "Male",
+      "name": "Farid"
+    }
+  ],
+  "fi-FI": [
+    {
+      "short_name": "fi-FI-HarriNeural",
+      "gender": "Male",
+      "name": "Harri"
+    },
+    {
+      "short_name": "fi-FI-NooraNeural",
+      "gender": "Female",
+      "name": "Noora"
+    },
+    {
+      "short_name": "fi-FI-SelmaNeural",
+      "gender": "Female",
+      "name": "Selma"
+    }
+  ],
+  "fil-PH": [
+    {
+      "short_name": "fil-PH-AngeloNeural",
+      "gender": "Male",
+      "name": "Angelo"
+    },
+    {
+      "short_name": "fil-PH-BlessicaNeural",
+      "gender": "Female",
+      "name": "Blessica"
+    }
+  ],
+  "fr-BE": [
+    {
+      "short_name": "fr-BE-CharlineNeural",
+      "gender": "Female",
+      "name": "Charline"
+    },
+    {
+      "short_name": "fr-BE-GerardNeural",
+      "gender": "Male",
+      "name": "Gerard"
+    }
+  ],
+  "fr-CA": [
+    {
+      "short_name": "fr-CA-AntoineNeural",
+      "gender": "Male",
+      "name": "Antoine"
+    },
+    {
+      "short_name": "fr-CA-JeanNeural",
+      "gender": "Male",
+      "name": "Jean"
+    },
+    {
+      "short_name": "fr-CA-SylvieNeural",
+      "gender": "Female",
+      "name": "Sylvie"
+    },
+    {
+      "short_name": "fr-CA-ThierryNeural",
+      "gender": "Male",
+      "name": "Thierry"
+    }
+  ],
+  "fr-CH": [
+    {
+      "short_name": "fr-CH-ArianeNeural",
+      "gender": "Female",
+      "name": "Ariane"
+    },
+    {
+      "short_name": "fr-CH-FabriceNeural",
+      "gender": "Male",
+      "name": "Fabrice"
+    }
+  ],
+  "fr-FR": [
+    {
+      "short_name": "fr-FR-AlainNeural",
+      "gender": "Male",
+      "name": "Alain"
+    },
+    {
+      "short_name": "fr-FR-BrigitteNeural",
+      "gender": "Female",
+      "name": "Brigitte"
+    },
+    {
+      "short_name": "fr-FR-CelesteNeural",
+      "gender": "Female",
+      "name": "Celeste"
+    },
+    {
+      "short_name": "fr-FR-ClaudeNeural",
+      "gender": "Male",
+      "name": "Claude"
+    },
+    {
+      "short_name": "fr-FR-CoralieNeural",
+      "gender": "Female",
+      "name": "Coralie"
+    },
+    {
+      "short_name": "fr-FR-DeniseNeural",
+      "gender": "Female",
+      "name": "Denise"
+    },
+    {
+      "short_name": "fr-FR-EloiseNeural",
+      "gender": "Female",
+      "name": "Eloise"
+    },
+    {
+      "short_name": "fr-FR-HenriNeural",
+      "gender": "Male",
+      "name": "Henri"
+    },
+    {
+      "short_name": "fr-FR-JacquelineNeural",
+      "gender": "Female",
+      "name": "Jacqueline"
+    },
+    {
+      "short_name": "fr-FR-JeromeNeural",
+      "gender": "Male",
+      "name": "Jerome"
+    },
+    {
+      "short_name": "fr-FR-JosephineNeural",
+      "gender": "Female",
+      "name": "Josephine"
+    },
+    {
+      "short_name": "fr-FR-LucienMultilingualNeural",
+      "gender": "Male",
+      "name": "Lucien Multilingual"
+    },
+    {
+      "short_name": "fr-FR-MauriceNeural",
+      "gender": "Male",
+      "name": "Maurice"
+    },
+    {
+      "short_name": "fr-FR-Remy:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Remy Dragon HD Latest"
+    },
+    {
+      "short_name": "fr-FR-RemyMultilingualNeural",
+      "gender": "Male",
+      "name": "Remy Multilingual"
+    },
+    {
+      "short_name": "fr-FR-Vivienne:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Vivienne Dragon HD Latest"
+    },
+    {
+      "short_name": "fr-FR-VivienneMultilingualNeural",
+      "gender": "Female",
+      "name": "Vivienne Multilingual"
+    },
+    {
+      "short_name": "fr-FR-YvesNeural",
+      "gender": "Male",
+      "name": "Yves"
+    },
+    {
+      "short_name": "fr-FR-YvetteNeural",
+      "gender": "Female",
+      "name": "Yvette"
+    }
+  ],
+  "ga-IE": [
+    {
+      "short_name": "ga-IE-ColmNeural",
+      "gender": "Male",
+      "name": "Colm"
+    },
+    {
+      "short_name": "ga-IE-OrlaNeural",
+      "gender": "Female",
+      "name": "Orla"
+    }
+  ],
+  "gl-ES": [
+    {
+      "short_name": "gl-ES-RoiNeural",
+      "gender": "Male",
+      "name": "Roi"
+    },
+    {
+      "short_name": "gl-ES-SabelaNeural",
+      "gender": "Female",
+      "name": "Sabela"
+    }
+  ],
+  "gu-IN": [
+    {
+      "short_name": "gu-IN-DhwaniNeural",
+      "gender": "Female",
+      "name": "Dhwani"
+    },
+    {
+      "short_name": "gu-IN-NiranjanNeural",
+      "gender": "Male",
+      "name": "Niranjan"
+    }
+  ],
+  "he-IL": [
+    {
+      "short_name": "he-IL-AvriNeural",
+      "gender": "Male",
+      "name": "Avri"
+    },
+    {
+      "short_name": "he-IL-HilaNeural",
+      "gender": "Female",
+      "name": "Hila"
+    }
+  ],
+  "hi-IN": [
+    {
+      "short_name": "hi-IN-AaravNeural",
+      "gender": "Male",
+      "name": "Aarav"
+    },
+    {
+      "short_name": "hi-IN-AartiNeural",
+      "gender": "Female",
+      "name": "Aarti"
+    },
+    {
+      "short_name": "hi-IN-AnanyaNeural",
+      "gender": "Female",
+      "name": "Ananya"
+    },
+    {
+      "short_name": "hi-IN-ArjunNeural",
+      "gender": "Male",
+      "name": "Arjun"
+    },
+    {
+      "short_name": "hi-IN-KavyaNeural",
+      "gender": "Female",
+      "name": "Kavya"
+    },
+    {
+      "short_name": "hi-IN-KunalNeural",
+      "gender": "Male",
+      "name": "Kunal"
+    },
+    {
+      "short_name": "hi-IN-MadhurNeural",
+      "gender": "Male",
+      "name": "Madhur"
+    },
+    {
+      "short_name": "hi-IN-RehaanNeural",
+      "gender": "Male",
+      "name": "Rehaan"
+    },
+    {
+      "short_name": "hi-IN-SwaraNeural",
+      "gender": "Female",
+      "name": "Swara"
+    }
+  ],
+  "hr-HR": [
+    {
+      "short_name": "hr-HR-GabrijelaNeural",
+      "gender": "Female",
+      "name": "Gabrijela"
+    },
+    {
+      "short_name": "hr-HR-SreckoNeural",
+      "gender": "Male",
+      "name": "Srecko"
+    }
+  ],
+  "hu-HU": [
+    {
+      "short_name": "hu-HU-NoemiNeural",
+      "gender": "Female",
+      "name": "Noemi"
+    },
+    {
+      "short_name": "hu-HU-TamasNeural",
+      "gender": "Male",
+      "name": "Tamas"
+    }
+  ],
+  "hy-AM": [
+    {
+      "short_name": "hy-AM-AnahitNeural",
+      "gender": "Female",
+      "name": "Anahit"
+    },
+    {
+      "short_name": "hy-AM-HaykNeural",
+      "gender": "Male",
+      "name": "Hayk"
+    }
+  ],
+  "id-ID": [
+    {
+      "short_name": "id-ID-ArdiNeural",
+      "gender": "Male",
+      "name": "Ardi"
+    },
+    {
+      "short_name": "id-ID-GadisNeural",
+      "gender": "Female",
+      "name": "Gadis"
+    }
+  ],
+  "is-IS": [
+    {
+      "short_name": "is-IS-GudrunNeural",
+      "gender": "Female",
+      "name": "Gudrun"
+    },
+    {
+      "short_name": "is-IS-GunnarNeural",
+      "gender": "Male",
+      "name": "Gunnar"
+    }
+  ],
+  "it-IT": [
+    {
+      "short_name": "it-IT-Alessio:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Alessio Dragon HD Latest"
+    },
+    {
+      "short_name": "it-IT-AlessioMultilingualNeural",
+      "gender": "Male",
+      "name": "Alessio Multilingual"
+    },
+    {
+      "short_name": "it-IT-BenignoNeural",
+      "gender": "Male",
+      "name": "Benigno"
+    },
+    {
+      "short_name": "it-IT-CalimeroNeural",
+      "gender": "Male",
+      "name": "Calimero"
+    },
+    {
+      "short_name": "it-IT-CataldoNeural",
+      "gender": "Male",
+      "name": "Cataldo"
+    },
+    {
+      "short_name": "it-IT-DiegoNeural",
+      "gender": "Male",
+      "name": "Diego"
+    },
+    {
+      "short_name": "it-IT-ElsaNeural",
+      "gender": "Female",
+      "name": "Elsa"
+    },
+    {
+      "short_name": "it-IT-FabiolaNeural",
+      "gender": "Female",
+      "name": "Fabiola"
+    },
+    {
+      "short_name": "it-IT-FiammaNeural",
+      "gender": "Female",
+      "name": "Fiamma"
+    },
+    {
+      "short_name": "it-IT-GianniNeural",
+      "gender": "Male",
+      "name": "Gianni"
+    },
+    {
+      "short_name": "it-IT-GiuseppeMultilingualNeural",
+      "gender": "Male",
+      "name": "Giuseppe Multilingual"
+    },
+    {
+      "short_name": "it-IT-GiuseppeNeural",
+      "gender": "Male",
+      "name": "Giuseppe"
+    },
+    {
+      "short_name": "it-IT-ImeldaNeural",
+      "gender": "Female",
+      "name": "Imelda"
+    },
+    {
+      "short_name": "it-IT-IrmaNeural",
+      "gender": "Female",
+      "name": "Irma"
+    },
+    {
+      "short_name": "it-IT-Isabella:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Isabella Dragon HD Latest"
+    },
+    {
+      "short_name": "it-IT-IsabellaMultilingualNeural",
+      "gender": "Female",
+      "name": "Isabella Multilingual"
+    },
+    {
+      "short_name": "it-IT-IsabellaNeural",
+      "gender": "Female",
+      "name": "Isabella"
+    },
+    {
+      "short_name": "it-IT-LisandroNeural",
+      "gender": "Male",
+      "name": "Lisandro"
+    },
+    {
+      "short_name": "it-IT-MarcelloMultilingualNeural",
+      "gender": "Male",
+      "name": "Marcello Multilingual"
+    },
+    {
+      "short_name": "it-IT-PalmiraNeural",
+      "gender": "Female",
+      "name": "Palmira"
+    },
+    {
+      "short_name": "it-IT-PierinaNeural",
+      "gender": "Female",
+      "name": "Pierina"
+    },
+    {
+      "short_name": "it-IT-RinaldoNeural",
+      "gender": "Male",
+      "name": "Rinaldo"
+    }
+  ],
+  "iu-Cans-CA": [
+    {
+      "short_name": "iu-Cans-CA-SiqiniqNeural",
+      "gender": "Female",
+      "name": "Siqiniq"
+    },
+    {
+      "short_name": "iu-Cans-CA-TaqqiqNeural",
+      "gender": "Male",
+      "name": "Taqqiq"
+    }
+  ],
+  "iu-Latn-CA": [
+    {
+      "short_name": "iu-Latn-CA-SiqiniqNeural",
+      "gender": "Female",
+      "name": "Siqiniq"
+    },
+    {
+      "short_name": "iu-Latn-CA-TaqqiqNeural",
+      "gender": "Male",
+      "name": "Taqqiq"
+    }
+  ],
+  "ja-JP": [
+    {
+      "short_name": "ja-JP-AoiNeural",
+      "gender": "Female",
+      "name": "Aoi"
+    },
+    {
+      "short_name": "ja-JP-DaichiNeural",
+      "gender": "Male",
+      "name": "Daichi"
+    },
+    {
+      "short_name": "ja-JP-KeitaNeural",
+      "gender": "Male",
+      "name": "Keita"
+    },
+    {
+      "short_name": "ja-JP-Masaru:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Masaru Dragon HD Latest"
+    },
+    {
+      "short_name": "ja-JP-MasaruMultilingualNeural",
+      "gender": "Male",
+      "name": "Masaru Multilingual"
+    },
+    {
+      "short_name": "ja-JP-MayuNeural",
+      "gender": "Female",
+      "name": "Mayu"
+    },
+    {
+      "short_name": "ja-JP-Nanami:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Nanami Dragon HD Latest"
+    },
+    {
+      "short_name": "ja-JP-NanamiNeural",
+      "gender": "Female",
+      "name": "Nanami"
+    },
+    {
+      "short_name": "ja-JP-NaokiNeural",
+      "gender": "Male",
+      "name": "Naoki"
+    },
+    {
+      "short_name": "ja-JP-ShioriNeural",
+      "gender": "Female",
+      "name": "Shiori"
+    }
+  ],
+  "jv-ID": [
+    {
+      "short_name": "jv-ID-DimasNeural",
+      "gender": "Male",
+      "name": "Dimas"
+    },
+    {
+      "short_name": "jv-ID-SitiNeural",
+      "gender": "Female",
+      "name": "Siti"
+    }
+  ],
+  "ka-GE": [
+    {
+      "short_name": "ka-GE-EkaNeural",
+      "gender": "Female",
+      "name": "Eka"
+    },
+    {
+      "short_name": "ka-GE-GiorgiNeural",
+      "gender": "Male",
+      "name": "Giorgi"
+    }
+  ],
+  "kk-KZ": [
+    {
+      "short_name": "kk-KZ-AigulNeural",
+      "gender": "Female",
+      "name": "Aigul"
+    },
+    {
+      "short_name": "kk-KZ-DauletNeural",
+      "gender": "Male",
+      "name": "Daulet"
+    }
+  ],
+  "km-KH": [
+    {
+      "short_name": "km-KH-PisethNeural",
+      "gender": "Male",
+      "name": "Piseth"
+    },
+    {
+      "short_name": "km-KH-SreymomNeural",
+      "gender": "Female",
+      "name": "Sreymom"
+    }
+  ],
+  "kn-IN": [
+    {
+      "short_name": "kn-IN-GaganNeural",
+      "gender": "Male",
+      "name": "Gagan"
+    },
+    {
+      "short_name": "kn-IN-SapnaNeural",
+      "gender": "Female",
+      "name": "Sapna"
+    }
+  ],
+  "ko-KR": [
+    {
+      "short_name": "ko-KR-BongJinNeural",
+      "gender": "Male",
+      "name": "BongJin"
+    },
+    {
+      "short_name": "ko-KR-GookMinNeural",
+      "gender": "Male",
+      "name": "GookMin"
+    },
+    {
+      "short_name": "ko-KR-HyunsuMultilingualNeural",
+      "gender": "Male",
+      "name": "Hyunsu Multilingual"
+    },
+    {
+      "short_name": "ko-KR-HyunsuNeural",
+      "gender": "Male",
+      "name": "Hyunsu"
+    },
+    {
+      "short_name": "ko-KR-InJoonNeural",
+      "gender": "Male",
+      "name": "InJoon"
+    },
+    {
+      "short_name": "ko-KR-JiMinNeural",
+      "gender": "Female",
+      "name": "JiMin"
+    },
+    {
+      "short_name": "ko-KR-SeoHyeonNeural",
+      "gender": "Female",
+      "name": "SeoHyeon"
+    },
+    {
+      "short_name": "ko-KR-SoonBokNeural",
+      "gender": "Female",
+      "name": "SoonBok"
+    },
+    {
+      "short_name": "ko-KR-SunHiNeural",
+      "gender": "Female",
+      "name": "Sun-Hi"
+    },
+    {
+      "short_name": "ko-KR-YuJinNeural",
+      "gender": "Female",
+      "name": "YuJin"
+    }
+  ],
+  "lo-LA": [
+    {
+      "short_name": "lo-LA-ChanthavongNeural",
+      "gender": "Male",
+      "name": "Chanthavong"
+    },
+    {
+      "short_name": "lo-LA-KeomanyNeural",
+      "gender": "Female",
+      "name": "Keomany"
+    }
+  ],
+  "lt-LT": [
+    {
+      "short_name": "lt-LT-LeonasNeural",
+      "gender": "Male",
+      "name": "Leonas"
+    },
+    {
+      "short_name": "lt-LT-OnaNeural",
+      "gender": "Female",
+      "name": "Ona"
+    }
+  ],
+  "lv-LV": [
+    {
+      "short_name": "lv-LV-EveritaNeural",
+      "gender": "Female",
+      "name": "Everita"
+    },
+    {
+      "short_name": "lv-LV-NilsNeural",
+      "gender": "Male",
+      "name": "Nils"
+    }
+  ],
+  "mk-MK": [
+    {
+      "short_name": "mk-MK-AleksandarNeural",
+      "gender": "Male",
+      "name": "Aleksandar"
+    },
+    {
+      "short_name": "mk-MK-MarijaNeural",
+      "gender": "Female",
+      "name": "Marija"
+    }
+  ],
+  "ml-IN": [
+    {
+      "short_name": "ml-IN-MidhunNeural",
+      "gender": "Male",
+      "name": "Midhun"
+    },
+    {
+      "short_name": "ml-IN-SobhanaNeural",
+      "gender": "Female",
+      "name": "Sobhana"
+    }
+  ],
+  "mn-MN": [
+    {
+      "short_name": "mn-MN-BataaNeural",
+      "gender": "Male",
+      "name": "Bataa"
+    },
+    {
+      "short_name": "mn-MN-YesuiNeural",
+      "gender": "Female",
+      "name": "Yesui"
+    }
+  ],
+  "mr-IN": [
+    {
+      "short_name": "mr-IN-AarohiNeural",
+      "gender": "Female",
+      "name": "Aarohi"
+    },
+    {
+      "short_name": "mr-IN-ManoharNeural",
+      "gender": "Male",
+      "name": "Manohar"
+    }
+  ],
+  "ms-MY": [
+    {
+      "short_name": "ms-MY-OsmanNeural",
+      "gender": "Male",
+      "name": "Osman"
+    },
+    {
+      "short_name": "ms-MY-YasminNeural",
+      "gender": "Female",
+      "name": "Yasmin"
+    }
+  ],
+  "mt-MT": [
+    {
+      "short_name": "mt-MT-GraceNeural",
+      "gender": "Female",
+      "name": "Grace"
+    },
+    {
+      "short_name": "mt-MT-JosephNeural",
+      "gender": "Male",
+      "name": "Joseph"
+    }
+  ],
+  "my-MM": [
+    {
+      "short_name": "my-MM-NilarNeural",
+      "gender": "Female",
+      "name": "Nilar"
+    },
+    {
+      "short_name": "my-MM-ThihaNeural",
+      "gender": "Male",
+      "name": "Thiha"
+    }
+  ],
+  "nb-NO": [
+    {
+      "short_name": "nb-NO-FinnNeural",
+      "gender": "Male",
+      "name": "Finn"
+    },
+    {
+      "short_name": "nb-NO-IselinNeural",
+      "gender": "Female",
+      "name": "Iselin"
+    },
+    {
+      "short_name": "nb-NO-PernilleNeural",
+      "gender": "Female",
+      "name": "Pernille"
+    }
+  ],
+  "ne-NP": [
+    {
+      "short_name": "ne-NP-HemkalaNeural",
+      "gender": "Female",
+      "name": "Hemkala"
+    },
+    {
+      "short_name": "ne-NP-SagarNeural",
+      "gender": "Male",
+      "name": "Sagar"
+    }
+  ],
+  "nl-BE": [
+    {
+      "short_name": "nl-BE-ArnaudNeural",
+      "gender": "Male",
+      "name": "Arnaud"
+    },
+    {
+      "short_name": "nl-BE-DenaNeural",
+      "gender": "Female",
+      "name": "Dena"
+    }
+  ],
+  "nl-NL": [
+    {
+      "short_name": "nl-NL-ColetteNeural",
+      "gender": "Female",
+      "name": "Colette"
+    },
+    {
+      "short_name": "nl-NL-FennaNeural",
+      "gender": "Female",
+      "name": "Fenna"
+    },
+    {
+      "short_name": "nl-NL-MaartenNeural",
+      "gender": "Male",
+      "name": "Maarten"
+    }
+  ],
+  "or-IN": [
+    {
+      "short_name": "or-IN-SubhasiniNeural",
+      "gender": "Female",
+      "name": "Subhasini"
+    },
+    {
+      "short_name": "or-IN-SukantNeural",
+      "gender": "Male",
+      "name": "Sukant"
+    }
+  ],
+  "pa-IN": [
+    {
+      "short_name": "pa-IN-OjasNeural",
+      "gender": "Male",
+      "name": "Ojas"
+    },
+    {
+      "short_name": "pa-IN-VaaniNeural",
+      "gender": "Female",
+      "name": "Vaani"
+    }
+  ],
+  "pl-PL": [
+    {
+      "short_name": "pl-PL-AgnieszkaNeural",
+      "gender": "Female",
+      "name": "Agnieszka"
+    },
+    {
+      "short_name": "pl-PL-MarekNeural",
+      "gender": "Male",
+      "name": "Marek"
+    },
+    {
+      "short_name": "pl-PL-ZofiaNeural",
+      "gender": "Female",
+      "name": "Zofia"
+    }
+  ],
+  "ps-AF": [
+    {
+      "short_name": "ps-AF-GulNawazNeural",
+      "gender": "Male",
+      "name": "Gul Nawaz"
+    },
+    {
+      "short_name": "ps-AF-LatifaNeural",
+      "gender": "Female",
+      "name": "Latifa"
+    }
+  ],
+  "pt-BR": [
+    {
+      "short_name": "pt-BR-AntonioNeural",
+      "gender": "Male",
+      "name": "Antonio"
+    },
+    {
+      "short_name": "pt-BR-BrendaNeural",
+      "gender": "Female",
+      "name": "Brenda"
+    },
+    {
+      "short_name": "pt-BR-DonatoNeural",
+      "gender": "Male",
+      "name": "Donato"
+    },
+    {
+      "short_name": "pt-BR-ElzaNeural",
+      "gender": "Female",
+      "name": "Elza"
+    },
+    {
+      "short_name": "pt-BR-FabioNeural",
+      "gender": "Male",
+      "name": "Fabio"
+    },
+    {
+      "short_name": "pt-BR-FranciscaNeural",
+      "gender": "Female",
+      "name": "Francisca"
+    },
+    {
+      "short_name": "pt-BR-GiovannaNeural",
+      "gender": "Female",
+      "name": "Giovanna"
+    },
+    {
+      "short_name": "pt-BR-HumbertoNeural",
+      "gender": "Male",
+      "name": "Humberto"
+    },
+    {
+      "short_name": "pt-BR-JulioNeural",
+      "gender": "Male",
+      "name": "Julio"
+    },
+    {
+      "short_name": "pt-BR-LeilaNeural",
+      "gender": "Female",
+      "name": "Leila"
+    },
+    {
+      "short_name": "pt-BR-LeticiaNeural",
+      "gender": "Female",
+      "name": "Leticia"
+    },
+    {
+      "short_name": "pt-BR-Macerio:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Macerio Dragon HD Latest"
+    },
+    {
+      "short_name": "pt-BR-MacerioMultilingualNeural",
+      "gender": "Male",
+      "name": "Macerio Multilingual"
+    },
+    {
+      "short_name": "pt-BR-ManuelaNeural",
+      "gender": "Female",
+      "name": "Manuela"
+    },
+    {
+      "short_name": "pt-BR-NicolauNeural",
+      "gender": "Male",
+      "name": "Nicolau"
+    },
+    {
+      "short_name": "pt-BR-Thalita:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Thalita Dragon HD Latest"
+    },
+    {
+      "short_name": "pt-BR-ThalitaMultilingualNeural",
+      "gender": "Female",
+      "name": "Thalita Multilingual"
+    },
+    {
+      "short_name": "pt-BR-ThalitaNeural",
+      "gender": "Female",
+      "name": "Thalita"
+    },
+    {
+      "short_name": "pt-BR-ValerioNeural",
+      "gender": "Male",
+      "name": "Valerio"
+    },
+    {
+      "short_name": "pt-BR-YaraNeural",
+      "gender": "Female",
+      "name": "Yara"
+    }
+  ],
+  "pt-PT": [
+    {
+      "short_name": "pt-PT-DuarteNeural",
+      "gender": "Male",
+      "name": "Duarte"
+    },
+    {
+      "short_name": "pt-PT-FernandaNeural",
+      "gender": "Female",
+      "name": "Fernanda"
+    },
+    {
+      "short_name": "pt-PT-RaquelNeural",
+      "gender": "Female",
+      "name": "Raquel"
+    }
+  ],
+  "ro-RO": [
+    {
+      "short_name": "ro-RO-AlinaNeural",
+      "gender": "Female",
+      "name": "Alina"
+    },
+    {
+      "short_name": "ro-RO-EmilNeural",
+      "gender": "Male",
+      "name": "Emil"
+    }
+  ],
+  "ru-RU": [
+    {
+      "short_name": "ru-RU-DariyaNeural",
+      "gender": "Female",
+      "name": "Dariya"
+    },
+    {
+      "short_name": "ru-RU-DmitryNeural",
+      "gender": "Male",
+      "name": "Dmitry"
+    },
+    {
+      "short_name": "ru-RU-SvetlanaNeural",
+      "gender": "Female",
+      "name": "Svetlana"
+    }
+  ],
+  "si-LK": [
+    {
+      "short_name": "si-LK-SameeraNeural",
+      "gender": "Male",
+      "name": "Sameera"
+    },
+    {
+      "short_name": "si-LK-ThiliniNeural",
+      "gender": "Female",
+      "name": "Thilini"
+    }
+  ],
+  "sk-SK": [
+    {
+      "short_name": "sk-SK-LukasNeural",
+      "gender": "Male",
+      "name": "Lukas"
+    },
+    {
+      "short_name": "sk-SK-ViktoriaNeural",
+      "gender": "Female",
+      "name": "Viktoria"
+    }
+  ],
+  "sl-SI": [
+    {
+      "short_name": "sl-SI-PetraNeural",
+      "gender": "Female",
+      "name": "Petra"
+    },
+    {
+      "short_name": "sl-SI-RokNeural",
+      "gender": "Male",
+      "name": "Rok"
+    }
+  ],
+  "so-SO": [
+    {
+      "short_name": "so-SO-MuuseNeural",
+      "gender": "Male",
+      "name": "Muuse"
+    },
+    {
+      "short_name": "so-SO-UbaxNeural",
+      "gender": "Female",
+      "name": "Ubax"
+    }
+  ],
+  "sq-AL": [
+    {
+      "short_name": "sq-AL-AnilaNeural",
+      "gender": "Female",
+      "name": "Anila"
+    },
+    {
+      "short_name": "sq-AL-IlirNeural",
+      "gender": "Male",
+      "name": "Ilir"
+    }
+  ],
+  "sr-Latn-RS": [
+    {
+      "short_name": "sr-Latn-RS-NicholasNeural",
+      "gender": "Male",
+      "name": "Nicholas"
+    },
+    {
+      "short_name": "sr-Latn-RS-SophieNeural",
+      "gender": "Female",
+      "name": "Sophie"
+    }
+  ],
+  "sr-RS": [
+    {
+      "short_name": "sr-RS-NicholasNeural",
+      "gender": "Male",
+      "name": "Nicholas"
+    },
+    {
+      "short_name": "sr-RS-SophieNeural",
+      "gender": "Female",
+      "name": "Sophie"
+    }
+  ],
+  "su-ID": [
+    {
+      "short_name": "su-ID-JajangNeural",
+      "gender": "Male",
+      "name": "Jajang"
+    },
+    {
+      "short_name": "su-ID-TutiNeural",
+      "gender": "Female",
+      "name": "Tuti"
+    }
+  ],
+  "sv-SE": [
+    {
+      "short_name": "sv-SE-HilleviNeural",
+      "gender": "Female",
+      "name": "Hillevi"
+    },
+    {
+      "short_name": "sv-SE-MattiasNeural",
+      "gender": "Male",
+      "name": "Mattias"
+    },
+    {
+      "short_name": "sv-SE-SofieNeural",
+      "gender": "Female",
+      "name": "Sofie"
+    }
+  ],
+  "sw-KE": [
+    {
+      "short_name": "sw-KE-RafikiNeural",
+      "gender": "Male",
+      "name": "Rafiki"
+    },
+    {
+      "short_name": "sw-KE-ZuriNeural",
+      "gender": "Female",
+      "name": "Zuri"
+    }
+  ],
+  "sw-TZ": [
+    {
+      "short_name": "sw-TZ-DaudiNeural",
+      "gender": "Male",
+      "name": "Daudi"
+    },
+    {
+      "short_name": "sw-TZ-RehemaNeural",
+      "gender": "Female",
+      "name": "Rehema"
+    }
+  ],
+  "ta-IN": [
+    {
+      "short_name": "ta-IN-PallaviNeural",
+      "gender": "Female",
+      "name": "Pallavi"
+    },
+    {
+      "short_name": "ta-IN-ValluvarNeural",
+      "gender": "Male",
+      "name": "Valluvar"
+    }
+  ],
+  "ta-LK": [
+    {
+      "short_name": "ta-LK-KumarNeural",
+      "gender": "Male",
+      "name": "Kumar"
+    },
+    {
+      "short_name": "ta-LK-SaranyaNeural",
+      "gender": "Female",
+      "name": "Saranya"
+    }
+  ],
+  "ta-MY": [
+    {
+      "short_name": "ta-MY-KaniNeural",
+      "gender": "Female",
+      "name": "Kani"
+    },
+    {
+      "short_name": "ta-MY-SuryaNeural",
+      "gender": "Male",
+      "name": "Surya"
+    }
+  ],
+  "ta-SG": [
+    {
+      "short_name": "ta-SG-AnbuNeural",
+      "gender": "Male",
+      "name": "Anbu"
+    },
+    {
+      "short_name": "ta-SG-VenbaNeural",
+      "gender": "Female",
+      "name": "Venba"
+    }
+  ],
+  "te-IN": [
+    {
+      "short_name": "te-IN-MohanNeural",
+      "gender": "Male",
+      "name": "Mohan"
+    },
+    {
+      "short_name": "te-IN-ShrutiNeural",
+      "gender": "Female",
+      "name": "Shruti"
+    }
+  ],
+  "th-TH": [
+    {
+      "short_name": "th-TH-AcharaNeural",
+      "gender": "Female",
+      "name": "Achara"
+    },
+    {
+      "short_name": "th-TH-NiwatNeural",
+      "gender": "Male",
+      "name": "Niwat"
+    },
+    {
+      "short_name": "th-TH-PremwadeeNeural",
+      "gender": "Female",
+      "name": "Premwadee"
+    }
+  ],
+  "tr-TR": [
+    {
+      "short_name": "tr-TR-AhmetNeural",
+      "gender": "Male",
+      "name": "Ahmet"
+    },
+    {
+      "short_name": "tr-TR-EmelNeural",
+      "gender": "Female",
+      "name": "Emel"
+    }
+  ],
+  "uk-UA": [
+    {
+      "short_name": "uk-UA-OstapNeural",
+      "gender": "Male",
+      "name": "Ostap"
+    },
+    {
+      "short_name": "uk-UA-PolinaNeural",
+      "gender": "Female",
+      "name": "Polina"
+    }
+  ],
+  "ur-IN": [
+    {
+      "short_name": "ur-IN-GulNeural",
+      "gender": "Female",
+      "name": "Gul"
+    },
+    {
+      "short_name": "ur-IN-SalmanNeural",
+      "gender": "Male",
+      "name": "Salman"
+    }
+  ],
+  "ur-PK": [
+    {
+      "short_name": "ur-PK-AsadNeural",
+      "gender": "Male",
+      "name": "Asad"
+    },
+    {
+      "short_name": "ur-PK-UzmaNeural",
+      "gender": "Female",
+      "name": "Uzma"
+    }
+  ],
+  "uz-UZ": [
+    {
+      "short_name": "uz-UZ-MadinaNeural",
+      "gender": "Female",
+      "name": "Madina"
+    },
+    {
+      "short_name": "uz-UZ-SardorNeural",
+      "gender": "Male",
+      "name": "Sardor"
+    }
+  ],
+  "vi-VN": [
+    {
+      "short_name": "vi-VN-HoaiMyNeural",
+      "gender": "Female",
+      "name": "HoaiMy"
+    },
+    {
+      "short_name": "vi-VN-NamMinhNeural",
+      "gender": "Male",
+      "name": "NamMinh"
+    }
+  ],
+  "wuu-CN": [
+    {
+      "short_name": "wuu-CN-XiaotongNeural",
+      "gender": "Female",
+      "name": "Xiaotong"
+    },
+    {
+      "short_name": "wuu-CN-YunzheNeural",
+      "gender": "Male",
+      "name": "Yunzhe"
+    }
+  ],
+  "yue-CN": [
+    {
+      "short_name": "yue-CN-XiaoMinNeural",
+      "gender": "Female",
+      "name": "XiaoMin"
+    },
+    {
+      "short_name": "yue-CN-YunSongNeural",
+      "gender": "Male",
+      "name": "YunSong"
+    }
+  ],
+  "zh-CN": [
+    {
+      "short_name": "zh-CN-Xiaochen:DragonHDFlashLatestNeural",
+      "gender": "Female",
+      "name": "zh-CN-Xiaochen:DragonHDFlashLatestNeural"
+    },
+    {
+      "short_name": "zh-CN-Xiaochen:DragonHDLatestNeural",
+      "gender": "Female",
+      "name": "Xiaochen Dragon HD Latest"
+    },
+    {
+      "short_name": "zh-CN-XiaochenMultilingualNeural",
+      "gender": "Female",
+      "name": "Xiaochen Multilingual"
+    },
+    {
+      "short_name": "zh-CN-XiaochenNeural",
+      "gender": "Female",
+      "name": "Xiaochen"
+    },
+    {
+      "short_name": "zh-CN-XiaohanNeural",
+      "gender": "Female",
+      "name": "Xiaohan"
+    },
+    {
+      "short_name": "zh-CN-XiaomengNeural",
+      "gender": "Female",
+      "name": "Xiaomeng"
+    },
+    {
+      "short_name": "zh-CN-XiaomoNeural",
+      "gender": "Female",
+      "name": "Xiaomo"
+    },
+    {
+      "short_name": "zh-CN-XiaoqiuNeural",
+      "gender": "Female",
+      "name": "Xiaoqiu"
+    },
+    {
+      "short_name": "zh-CN-XiaorouNeural",
+      "gender": "Female",
+      "name": "Xiaorou"
+    },
+    {
+      "short_name": "zh-CN-XiaoruiNeural",
+      "gender": "Female",
+      "name": "Xiaorui"
+    },
+    {
+      "short_name": "zh-CN-XiaoshuangMultilingualNeural",
+      "gender": "Female",
+      "name": "Xiaoshuang Multilingual"
+    },
+    {
+      "short_name": "zh-CN-XiaoshuangNeural",
+      "gender": "Female",
+      "name": "Xiaoshuang"
+    },
+    {
+      "short_name": "zh-CN-Xiaoxiao2:DragonHDFlashLatestNeural",
+      "gender": "Female",
+      "name": "zh-CN-Xiaoxiao2:DragonHDFlashLatestNeural"
+    },
+    {
+      "short_name": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural",
+      "gender": "Female",
+      "name": "zh-CN-Xiaoxiao:DragonHDFlashLatestNeural"
+    },
+    {
+      "short_name": "zh-CN-XiaoxiaoDialectsNeural",
+      "gender": "Female",
+      "name": "Xiaoxiao Dialects"
+    },
+    {
+      "short_name": "zh-CN-XiaoxiaoMultilingualNeural",
+      "gender": "Female",
+      "name": "Xiaoxiao Multilingual"
+    },
+    {
+      "short_name": "zh-CN-XiaoxiaoNeural",
+      "gender": "Female",
+      "name": "Xiaoxiao"
+    },
+    {
+      "short_name": "zh-CN-XiaoyanNeural",
+      "gender": "Female",
+      "name": "Xiaoyan"
+    },
+    {
+      "short_name": "zh-CN-XiaoyiNeural",
+      "gender": "Female",
+      "name": "Xiaoyi"
+    },
+    {
+      "short_name": "zh-CN-XiaoyouMultilingualNeural",
+      "gender": "Female",
+      "name": "Xiaoyou Multilingual"
+    },
+    {
+      "short_name": "zh-CN-XiaoyouNeural",
+      "gender": "Female",
+      "name": "Xiaoyou"
+    },
+    {
+      "short_name": "zh-CN-XiaoyuMultilingualNeural",
+      "gender": "Female",
+      "name": "Xiaoyu Multilingual"
+    },
+    {
+      "short_name": "zh-CN-XiaozhenNeural",
+      "gender": "Female",
+      "name": "Xiaozhen"
+    },
+    {
+      "short_name": "zh-CN-Yunfan:DragonHDLatestNeural",
+      "gender": "Male",
+      "name": "Yunfan Dragon HD Latest"
+    },
+    {
+      "short_name": "zh-CN-YunfanMultilingualNeural",
+      "gender": "Male",
+      "name": "Yunfan Multilingual"
+    },
+    {
+      "short_name": "zh-CN-YunfengNeural",
+      "gender": "Male",
+      "name": "Yunfeng"
+    },
+    {
+      "short_name": "zh-CN-YunhaoNeural",
+      "gender": "Male",
+      "name": "Yunhao"
+    },
+    {
+      "short_name": "zh-CN-YunjianNeural",
+      "gender": "Male",
+      "name": "Yunjian"
+    },
+    {
+      "short_name": "zh-CN-YunjieNeural",
+      "gender": "Male",
+      "name": "Yunjie"
+    },
+    {
+      "short_name": "zh-CN-Yunxia:DragonHDFlashLatestNeural",
+      "gender": "Male",
+      "name": "zh-CN-Yunxia:DragonHDFlashLatestNeural"
+    },
+    {
+      "short_name": "zh-CN-YunxiaNeural",
+      "gender": "Male",
+      "name": "Yunxia"
+    },
+    {
+      "short_name": "zh-CN-Yunxiao:DragonHDFlashLatestNeural",
+      "gender": "Male",
+      "name": "zh-CN-Yunxiao:DragonHDFlashLatestNeural"
+    },
+    {
+      "short_name": "zh-CN-YunxiaoMultilingualNeural",
+      "gender": "Male",
+      "name": "Yunxiao Multilingual"
+    },
+    {
+      "short_name": "zh-CN-YunxiNeural",
+      "gender": "Male",
+      "name": "Yunxi"
+    },
+    {
+      "short_name": "zh-CN-YunyangNeural",
+      "gender": "Male",
+      "name": "Yunyang"
+    },
+    {
+      "short_name": "zh-CN-Yunye:DragonHDFlashLatestNeural",
+      "gender": "Male",
+      "name": "zh-CN-Yunye:DragonHDFlashLatestNeural"
+    },
+    {
+      "short_name": "zh-CN-YunyeNeural",
+      "gender": "Male",
+      "name": "Yunye"
+    },
+    {
+      "short_name": "zh-CN-Yunyi:DragonHDFlashLatestNeural",
+      "gender": "Male",
+      "name": "zh-CN-Yunyi:DragonHDFlashLatestNeural"
+    },
+    {
+      "short_name": "zh-CN-YunyiMultilingualNeural",
+      "gender": "Male",
+      "name": "Yunyi Multilingual"
+    },
+    {
+      "short_name": "zh-CN-YunzeNeural",
+      "gender": "Male",
+      "name": "Yunze"
+    }
+  ],
+  "zh-CN-guangxi": [
+    {
+      "short_name": "zh-CN-guangxi-YunqiNeural",
+      "gender": "Male",
+      "name": "Yunqi"
+    }
+  ],
+  "zh-CN-henan": [
+    {
+      "short_name": "zh-CN-henan-YundengNeural",
+      "gender": "Male",
+      "name": "Yundeng"
+    }
+  ],
+  "zh-CN-liaoning": [
+    {
+      "short_name": "zh-CN-liaoning-XiaobeiNeural",
+      "gender": "Female",
+      "name": "Xiaobei"
+    },
+    {
+      "short_name": "zh-CN-liaoning-YunbiaoNeural",
+      "gender": "Male",
+      "name": "Yunbiao"
+    }
+  ],
+  "zh-CN-shaanxi": [
+    {
+      "short_name": "zh-CN-shaanxi-XiaoniNeural",
+      "gender": "Female",
+      "name": "Xiaoni"
+    }
+  ],
+  "zh-CN-shandong": [
+    {
+      "short_name": "zh-CN-shandong-YunxiangNeural",
+      "gender": "Male",
+      "name": "Yunxiang"
+    }
+  ],
+  "zh-CN-sichuan": [
+    {
+      "short_name": "zh-CN-sichuan-YunxiNeural",
+      "gender": "Male",
+      "name": "Yunxi"
+    }
+  ],
+  "zh-HK": [
+    {
+      "short_name": "zh-HK-HiuGaaiNeural",
+      "gender": "Female",
+      "name": "HiuGaai"
+    },
+    {
+      "short_name": "zh-HK-HiuMaanNeural",
+      "gender": "Female",
+      "name": "HiuMaan"
+    },
+    {
+      "short_name": "zh-HK-WanLungNeural",
+      "gender": "Male",
+      "name": "WanLung"
+    }
+  ],
+  "zh-TW": [
+    {
+      "short_name": "zh-TW-HsiaoChenNeural",
+      "gender": "Female",
+      "name": "HsiaoChen"
+    },
+    {
+      "short_name": "zh-TW-HsiaoYuNeural",
+      "gender": "Female",
+      "name": "HsiaoYu"
+    },
+    {
+      "short_name": "zh-TW-YunJheNeural",
+      "gender": "Male",
+      "name": "YunJhe"
+    }
+  ],
+  "zu-ZA": [
+    {
+      "short_name": "zu-ZA-ThandoNeural",
+      "gender": "Female",
+      "name": "Thando"
+    },
+    {
+      "short_name": "zu-ZA-ThembaNeural",
+      "gender": "Male",
+      "name": "Themba"
+    }
+  ]
+}

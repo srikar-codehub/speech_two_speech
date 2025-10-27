@@ -1,5 +1,8 @@
+import json
 import threading
-from typing import List, Optional
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
 
 try:
     import audioop  # type: ignore[attr-defined]  # Python <3.13
@@ -12,11 +15,28 @@ except ModuleNotFoundError:
 
 import gradio as gr
 
-from azure_metadata import AzureMetadata, LanguageOption, VoiceOption
 from silero_vadhelper import SileroVADHelper
 from stt_azure import AzureSTT
 from translate_azure import AzureTranslator
 from tts_azure import AzureTTS
+
+
+@dataclass(frozen=True)
+class VoiceOption:
+    short_name: str
+    locale: str
+    gender: str
+    name: str
+
+
+@dataclass(frozen=True)
+class LanguageOption:
+    code: str
+    name: str
+    native_name: str
+    locales: List[str]
+    voices: List[VoiceOption]
+    default_locale: str
 
 
 DEFAULT_SOURCE = "en"
@@ -24,12 +44,77 @@ DEFAULT_TARGET = "fr"
 DEFAULT_SILENCE_SECONDS = 3.0
 
 
-metadata_provider = AzureMetadata()
+def _load_json(filename: str):
+    path = Path(__file__).resolve().parent / filename
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def _matches_language(locale: str, code: str) -> bool:
+    locale_lower = locale.lower()
+    code_lower = code.lower()
+    if locale_lower == code_lower:
+        return True
+    return locale_lower.split("-")[0] == code_lower.split("-")[0]
+
+
+def _build_language_options() -> Tuple[Dict[str, LanguageOption], Dict[str, VoiceOption]]:
+    languages_data = _load_json("azure_languages.json")
+    voices_data = _load_json("azure_voices.json")
+
+    language_options: Dict[str, LanguageOption] = {}
+    voices_by_name: Dict[str, VoiceOption] = {}
+
+    for code, details in languages_data.items():
+        voice_options: List[VoiceOption] = []
+        for locale, voice_entries in voices_data.items():
+            if not _matches_language(locale, code):
+                continue
+            for entry in voice_entries:
+                short_name = entry.get("short_name")
+                if not short_name:
+                    continue
+                voice = VoiceOption(
+                    short_name=short_name,
+                    locale=locale,
+                    gender=entry.get("gender", "Unknown"),
+                    name=entry.get("name", short_name),
+                )
+                voice_options.append(voice)
+
+        if not voice_options:
+            continue
+
+        voice_options.sort(key=lambda v: v.short_name.lower())
+        locales = sorted({voice.locale for voice in voice_options})
+        default_locale = locales[0] if locales else ""
+
+        option = LanguageOption(
+            code=code,
+            name=details.get("name", code),
+            native_name=details.get("nativeName", details.get("name", code)),
+            locales=locales,
+            voices=voice_options,
+            default_locale=default_locale,
+        )
+        language_options[code] = option
+        voices_by_name.update({voice.short_name: voice for voice in voice_options})
+
+    if not language_options:
+        raise RuntimeError(
+            "No language/voice combinations available. Run populate_values.py."
+        )
+
+    return language_options, voices_by_name
+
+
+LANGUAGE_OPTIONS, VOICES_BY_NAME = _build_language_options()
 
 
 class SpeechTranslationController:
-    def __init__(self, metadata: AzureMetadata):
-        self._metadata = metadata
+    def __init__(self, languages: Dict[str, LanguageOption], voices: Dict[str, VoiceOption]):
+        self._languages = languages
+        self._voices = voices
         self._thread: Optional[threading.Thread] = None
         self._thread_lock = threading.Lock()
         self._stop_event = threading.Event()
@@ -53,26 +138,19 @@ class SpeechTranslationController:
             if self._thread and self._thread.is_alive():
                 return "Already running"
 
-            source_option = self._metadata.get_language(source_lang)
-            target_option = self._metadata.get_language(target_lang)
+            source_option = self._languages.get(source_lang)
+            target_option = self._languages.get(target_lang)
             if not source_option or not target_option:
                 self._append_log("Invalid language selection.")
                 self._set_status("Error")
                 return "Invalid language selection"
 
-            voice_option = self._metadata.get_voice(voice_name)
+            voice_option = self._voices.get(voice_name)
             if not voice_option or voice_option.short_name not in {
                 v.short_name for v in target_option.voices
             }:
-                default_voice_name = self._metadata.get_default_voice_for_language(
-                    target_lang
-                )
-                voice_option = (
-                    self._metadata.get_voice(default_voice_name)
-                    if default_voice_name
-                    else None
-                )
-                voice_name = voice_option.short_name if voice_option else voice_name
+                voice_option = target_option.voices[0]
+                voice_name = voice_option.short_name
 
             if not voice_option:
                 self._append_log("No Azure voice available for the selected language.")
@@ -234,7 +312,7 @@ class SpeechTranslationController:
             self._status = "Stopped"
 
 
-controller = SpeechTranslationController(metadata_provider)
+controller = SpeechTranslationController(LANGUAGE_OPTIONS, VOICES_BY_NAME)
 
 
 def start_pipeline(
@@ -261,7 +339,7 @@ def refresh_outputs():
 
 
 def update_voices(selected_target: str):
-    option = metadata_provider.get_language(selected_target)
+    option = LANGUAGE_OPTIONS.get(selected_target)
     if not option or not option.voices:
         return gr.update(choices=[], value=None, interactive=False)
 
@@ -271,7 +349,7 @@ def update_voices(selected_target: str):
 
 
 def describe_language(code: str) -> str:
-    option = metadata_provider.get_language(code)
+    option = LANGUAGE_OPTIONS.get(code)
     if not option:
         return f"**{code}** — unavailable in metadata."
 
@@ -293,7 +371,7 @@ def describe_language(code: str) -> str:
 def describe_voice(short_name: Optional[str]) -> str:
     if not short_name:
         return "Voice: unavailable."
-    voice = metadata_provider.get_voice(short_name)
+    voice = VOICES_BY_NAME.get(short_name)
     if not voice:
         return f"Voice **{short_name}** — metadata unavailable."
     return (
@@ -303,12 +381,13 @@ def describe_voice(short_name: Optional[str]) -> str:
 
 
 def describe_default_voice(language_code: str) -> str:
-    default_voice = metadata_provider.get_default_voice_for_language(language_code)
+    option = LANGUAGE_OPTIONS.get(language_code)
+    default_voice = option.voices[0].short_name if option and option.voices else None
     return describe_voice(default_voice)
 
 
 def build_interface():
-    language_options = metadata_provider.get_languages()
+    language_options = sorted(LANGUAGE_OPTIONS.values(), key=lambda opt: opt.name.lower())
     if not language_options:
         raise RuntimeError("Azure metadata did not return any languages.")
 
@@ -322,16 +401,16 @@ def build_interface():
 
     default_source_code = (
         DEFAULT_SOURCE
-        if metadata_provider.get_language(DEFAULT_SOURCE)
+        if LANGUAGE_OPTIONS.get(DEFAULT_SOURCE)
         else language_codes[0]
     )
     default_target_code = (
         DEFAULT_TARGET
-        if metadata_provider.get_language(DEFAULT_TARGET)
+        if LANGUAGE_OPTIONS.get(DEFAULT_TARGET)
         else language_codes[0]
     )
 
-    target_option = metadata_provider.get_language(default_target_code)
+    target_option = LANGUAGE_OPTIONS.get(default_target_code)
     voice_choices = (
         [voice.short_name for voice in target_option.voices] if target_option else []
     )
