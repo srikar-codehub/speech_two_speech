@@ -1,6 +1,5 @@
 import threading
-from dataclasses import dataclass
-from typing import Dict, List, Optional
+from typing import List, Optional
 
 try:
     import audioop  # type: ignore[attr-defined]  # Python <3.13
@@ -13,97 +12,24 @@ except ModuleNotFoundError:
 
 import gradio as gr
 
+from azure_metadata import AzureMetadata, LanguageOption, VoiceOption
 from silero_vadhelper import SileroVADHelper
 from stt_azure import AzureSTT
 from translate_azure import AzureTranslator
 from tts_azure import AzureTTS
 
 
-@dataclass(frozen=True)
-class LanguageProfile:
-    label: str
-    stt_locale: str
-    translator_code: str
-    tts_language: str
-    voices: List[str]
-
-
-LANGUAGE_PROFILES: Dict[str, LanguageProfile] = {
-    "en": LanguageProfile(
-        label="English (US)",
-        stt_locale="en-US",
-        translator_code="en",
-        tts_language="en-US",
-        voices=[
-            "en-US-AnaNeural",
-            "en-US-GuyNeural",
-            "en-US-JennyNeural",
-        ],
-    ),
-    "fr": LanguageProfile(
-        label="French (France)",
-        stt_locale="fr-FR",
-        translator_code="fr",
-        tts_language="fr-FR",
-        voices=[
-            "fr-FR-AlainNeural",
-            "fr-FR-DeniseNeural",
-            "fr-FR-HenriNeural",
-        ],
-    ),
-    "es": LanguageProfile(
-        label="Spanish (Spain)",
-        stt_locale="es-ES",
-        translator_code="es",
-        tts_language="es-ES",
-        voices=[
-            "es-ES-ElviraNeural",
-            "es-ES-SergioNeural",
-            "es-ES-AlvaroNeural",
-        ],
-    ),
-    "de": LanguageProfile(
-        label="German (Germany)",
-        stt_locale="de-DE",
-        translator_code="de",
-        tts_language="de-DE",
-        voices=[
-            "de-DE-ConradNeural",
-            "de-DE-KatjaNeural",
-            "de-DE-KillianNeural",
-        ],
-    ),
-    "hi": LanguageProfile(
-        label="Hindi (India)",
-        stt_locale="hi-IN",
-        translator_code="hi",
-        tts_language="hi-IN",
-        voices=[
-            "hi-IN-MadhurNeural",
-            "hi-IN-SwaraNeural",
-            "hi-IN-MohanNeural",
-        ],
-    ),
-    "zh": LanguageProfile(
-        label="Chinese (Mainland)",
-        stt_locale="zh-CN",
-        translator_code="zh-Hans",
-        tts_language="zh-CN",
-        voices=[
-            "zh-CN-XiaoxiaoNeural",
-            "zh-CN-YunjianNeural",
-            "zh-CN-YunxiNeural",
-        ],
-    ),
-}
-
 DEFAULT_SOURCE = "en"
 DEFAULT_TARGET = "fr"
 DEFAULT_SILENCE_SECONDS = 3.0
 
 
+metadata_provider = AzureMetadata()
+
+
 class SpeechTranslationController:
-    def __init__(self):
+    def __init__(self, metadata: AzureMetadata):
+        self._metadata = metadata
         self._thread: Optional[threading.Thread] = None
         self._thread_lock = threading.Lock()
         self._stop_event = threading.Event()
@@ -127,22 +53,53 @@ class SpeechTranslationController:
             if self._thread and self._thread.is_alive():
                 return "Already running"
 
-            source_profile = LANGUAGE_PROFILES[source_lang]
-            target_profile = LANGUAGE_PROFILES[target_lang]
+            source_option = self._metadata.get_language(source_lang)
+            target_option = self._metadata.get_language(target_lang)
+            if not source_option or not target_option:
+                self._append_log("Invalid language selection.")
+                self._set_status("Error")
+                return "Invalid language selection"
+
+            voice_option = self._metadata.get_voice(voice_name)
+            if not voice_option or voice_option.short_name not in {
+                v.short_name for v in target_option.voices
+            }:
+                default_voice_name = self._metadata.get_default_voice_for_language(
+                    target_lang
+                )
+                voice_option = (
+                    self._metadata.get_voice(default_voice_name)
+                    if default_voice_name
+                    else None
+                )
+                voice_name = voice_option.short_name if voice_option else voice_name
+
+            if not voice_option:
+                self._append_log("No Azure voice available for the selected language.")
+                self._set_status("Error")
+                return "Voice unavailable"
+
             silence_seconds = max(0.5, float(silence_seconds))
 
             self._reset_state()
             self._append_log(
-                f"Initializing pipeline with STT {source_profile.stt_locale}, "
-                f"translator {target_profile.translator_code}, "
-                f"TTS voice {voice_name}, silence duration {silence_seconds:.1f}s"
+                "Initializing pipeline with "
+                f"STT locale {source_option.default_locale}, "
+                f"translator code {target_option.code}, "
+                f"TTS voice {voice_option.short_name}, "
+                f"silence duration {silence_seconds:.1f}s"
             )
             self._set_status("Initializing...")
 
             self._stop_event.clear()
             self._thread = threading.Thread(
                 target=self._run_pipeline,
-                args=(source_profile, target_profile, voice_name, silence_seconds),
+                args=(
+                    source_option,
+                    target_option,
+                    voice_option,
+                    silence_seconds,
+                ),
                 daemon=True,
             )
             self._thread.start()
@@ -187,23 +144,28 @@ class SpeechTranslationController:
 
     def _run_pipeline(
         self,
-        source_profile: LanguageProfile,
-        target_profile: LanguageProfile,
-        voice_name: str,
+        source_option: LanguageOption,
+        target_option: LanguageOption,
+        voice_option: VoiceOption,
         silence_seconds: float,
     ) -> None:
         try:
             vad = SileroVADHelper(silence_duration=silence_seconds)
             stt = AzureSTT()
-            stt.speech_config.speech_recognition_language = source_profile.stt_locale
+            stt_language = source_option.default_locale or source_option.locales[0]
+            stt.speech_config.speech_recognition_language = stt_language
 
-            translator = AzureTranslator(target_lang=target_profile.translator_code)
+            translator = AzureTranslator(target_lang=target_option.code)
             tts = AzureTTS(
-                language=target_profile.tts_language,
-                voice_name=voice_name,
+                language=voice_option.locale,
+                voice_name=voice_option.short_name,
             )
 
-            self._append_log("Components initialized.")
+            self._append_log(
+                "Components initialized "
+                f"(STT {stt_language}, translation {target_option.code}, "
+                f"TTS {voice_option.short_name})."
+            )
             self._set_status("Listening...")
 
             self._vad_stream = vad.start()
@@ -272,7 +234,7 @@ class SpeechTranslationController:
             self._status = "Stopped"
 
 
-controller = SpeechTranslationController()
+controller = SpeechTranslationController(metadata_provider)
 
 
 def start_pipeline(
@@ -299,39 +261,113 @@ def refresh_outputs():
 
 
 def update_voices(selected_target: str):
-    profile = LANGUAGE_PROFILES[selected_target]
-    default_voice = profile.voices[0] if profile.voices else None
-    return gr.update(choices=profile.voices, value=default_voice, interactive=True)
+    option = metadata_provider.get_language(selected_target)
+    if not option or not option.voices:
+        return gr.update(choices=[], value=None, interactive=False)
+
+    default_voice = option.voices[0].short_name
+    choices = [voice.short_name for voice in option.voices]
+    return gr.update(choices=choices, value=default_voice, interactive=True)
+
+
+def describe_language(code: str) -> str:
+    option = metadata_provider.get_language(code)
+    if not option:
+        return f"**{code}** — unavailable in metadata."
+
+    display_native = option.native_name or option.name
+    if display_native and display_native.lower() == option.name.lower():
+        display_name = option.name
+    else:
+        display_name = f"{option.name} / {display_native}"
+
+    locales = ", ".join(option.locales) if option.locales else "n/a"
+    voice_count = len(option.voices)
+    return (
+        f"**{code}** — {display_name}<br/>"
+        f"STT locales: {locales}<br/>"
+        f"Voices available: {voice_count}"
+    )
+
+
+def describe_voice(short_name: Optional[str]) -> str:
+    if not short_name:
+        return "Voice: unavailable."
+    voice = metadata_provider.get_voice(short_name)
+    if not voice:
+        return f"Voice **{short_name}** — metadata unavailable."
+    return (
+        f"**{voice.short_name}** — {voice.name} "
+        f"({voice.gender}, locale {voice.locale})"
+    )
+
+
+def describe_default_voice(language_code: str) -> str:
+    default_voice = metadata_provider.get_default_voice_for_language(language_code)
+    return describe_voice(default_voice)
 
 
 def build_interface():
-    default_voice = LANGUAGE_PROFILES[DEFAULT_TARGET].voices[0]
+    language_options = metadata_provider.get_languages()
+    if not language_options:
+        raise RuntimeError("Azure metadata did not return any languages.")
+
+    language_codes = [option.code for option in language_options]
+    language_labels = {
+        option.code: f"{option.name} ({option.native_name})"
+        if option.native_name and option.native_name.lower() != option.name.lower()
+        else option.name
+        for option in language_options
+    }
+
+    default_source_code = (
+        DEFAULT_SOURCE
+        if metadata_provider.get_language(DEFAULT_SOURCE)
+        else language_codes[0]
+    )
+    default_target_code = (
+        DEFAULT_TARGET
+        if metadata_provider.get_language(DEFAULT_TARGET)
+        else language_codes[0]
+    )
+
+    target_option = metadata_provider.get_language(default_target_code)
+    voice_choices = (
+        [voice.short_name for voice in target_option.voices] if target_option else []
+    )
+    default_voice = voice_choices[0] if voice_choices else None
 
     with gr.Blocks(title="Speech Translation UI") as demo:
         gr.Markdown(
             "## Real-time Speech Translation\n"
-            "Run the Silero VAD ➜ Azure STT ➜ Azure Translator ➜ Azure TTS loop."
+            "Run the Silero VAD -> Azure STT -> Azure Translator -> Azure TTS loop."
         )
 
         with gr.Row():
             source_dropdown = gr.Dropdown(
-                choices=list(LANGUAGE_PROFILES.keys()),
-                value=DEFAULT_SOURCE,
-                label="Source language",
-                info=LANGUAGE_PROFILES[DEFAULT_SOURCE].label,
+                choices=language_codes,
+                value=default_source_code,
+                label="Source language (translation code)",
+                info=language_labels.get(default_source_code, ""),
             )
             target_dropdown = gr.Dropdown(
-                choices=list(LANGUAGE_PROFILES.keys()),
-                value=DEFAULT_TARGET,
-                label="Target language",
-                info=LANGUAGE_PROFILES[DEFAULT_TARGET].label,
+                choices=language_codes,
+                value=default_target_code,
+                label="Target language (translation code)",
+                info=language_labels.get(default_target_code, ""),
             )
             voice_dropdown = gr.Dropdown(
-                choices=LANGUAGE_PROFILES[DEFAULT_TARGET].voices,
+                choices=voice_choices,
                 value=default_voice,
                 label="Azure neural voice",
                 info="Voices update based on target language.",
+                interactive=bool(voice_choices),
             )
+
+        with gr.Row():
+            source_info = gr.Markdown(describe_language(default_source_code))
+            target_info = gr.Markdown(describe_language(default_target_code))
+            voice_info = gr.Markdown(describe_voice(default_voice))
 
         silence_slider = gr.Slider(
             minimum=0.5,
@@ -371,10 +407,30 @@ def build_interface():
             placeholder="Pipeline logs will appear here.",
         )
 
+        source_dropdown.change(
+            fn=describe_language,
+            inputs=source_dropdown,
+            outputs=source_info,
+        )
+        target_dropdown.change(
+            fn=describe_language,
+            inputs=target_dropdown,
+            outputs=target_info,
+        )
         target_dropdown.change(
             fn=update_voices,
             inputs=target_dropdown,
             outputs=voice_dropdown,
+        )
+        target_dropdown.change(
+            fn=describe_default_voice,
+            inputs=target_dropdown,
+            outputs=voice_info,
+        )
+        voice_dropdown.change(
+            fn=describe_voice,
+            inputs=voice_dropdown,
+            outputs=voice_info,
         )
 
         start_button.click(
