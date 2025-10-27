@@ -185,30 +185,36 @@ class SpeechTranslationController:
 
     def stop(self) -> str:
         with self._thread_lock:
-            if not self._thread or not self._thread.is_alive():
+            thread = self._thread
+            if not thread or not thread.is_alive():
                 self._set_status("Stopped")
                 return "Already stopped"
 
             self._set_status("Stopping...")
             self._stop_event.set()
 
-            if self._vad_stream:
-                try:
-                    self._vad_stream.close()
-                except Exception:
-                    pass
+        if self._vad_stream:
+            try:
+                self._vad_stream.close()
+            except Exception:
+                pass
+            finally:
                 self._vad_stream = None
 
-            self._append_log("Stop requested by user.")
+        self._append_log("Stop requested by user.")
 
-            self._thread.join(timeout=2.0)
-            if self._thread.is_alive():
+        if thread:
+            thread.join(timeout=2.0)
+            if thread.is_alive():
                 self._append_log("Background thread is taking longer to stop...")
-            else:
-                self._append_log("Pipeline stopped.")
+                thread.join()
 
-            self._set_status("Stopped")
-            return "Stopped"
+        with self._thread_lock:
+            self._thread = None
+
+        self._append_log("Pipeline stopped.")
+        self._set_status("Stopped")
+        return "Stopped"
 
     def snapshot(self):
         with self._state_lock:
@@ -287,6 +293,8 @@ class SpeechTranslationController:
             self._stop_event.clear()
             self._vad_stream = None
             self._set_status("Stopped")
+            if threading.current_thread() is self._thread:
+                self._thread = None
 
     def _append_log(self, message: str) -> None:
         with self._state_lock:
@@ -310,6 +318,20 @@ class SpeechTranslationController:
             self._last_transcription = ""
             self._last_translation = ""
             self._status = "Stopped"
+
+    def is_running(self) -> bool:
+        with self._thread_lock:
+            return self._thread is not None and self._thread.is_alive()
+
+    def restart_with(
+        self,
+        source_lang: str,
+        target_lang: str,
+        voice_name: str,
+        silence_seconds: float,
+    ) -> str:
+        self.stop()
+        return self.start(source_lang, target_lang, voice_name, silence_seconds)
 
 
 controller = SpeechTranslationController(LANGUAGE_OPTIONS, VOICES_BY_NAME)
@@ -386,6 +408,45 @@ def describe_default_voice(language_code: str) -> str:
     return describe_voice(default_voice)
 
 
+def apply_settings(
+    source_lang: str,
+    target_lang: str,
+    voice_name: str,
+    silence_seconds: float,
+) -> str:
+    silence_seconds = float(silence_seconds)
+    status = controller.restart_with(
+        source_lang,
+        target_lang,
+        voice_name,
+        silence_seconds,
+    )
+    return (
+        f"Applied settings — source {source_lang}, target {target_lang}, "
+        f"voice {voice_name or 'auto'}, silence {silence_seconds:.1f}s "
+        f"({status})."
+    )
+
+
+def handle_silence_change(
+    source_lang: str,
+    target_lang: str,
+    voice_name: str,
+    silence_seconds: float,
+):
+    silence_seconds = float(silence_seconds)
+    if controller.is_running():
+        status = controller.restart_with(
+            source_lang,
+            target_lang,
+            voice_name,
+            silence_seconds,
+        )
+        return f"Restarted with silence duration {silence_seconds:.1f}s ({status})."
+
+    return f"Silence duration set to {silence_seconds:.1f}s (applies on next start)."
+
+
 def build_interface():
     language_options = sorted(LANGUAGE_OPTIONS.values(), key=lambda opt: opt.name.lower())
     if not language_options:
@@ -460,6 +521,7 @@ def build_interface():
         with gr.Row():
             start_button = gr.Button("▶️ Start", variant="primary")
             stop_button = gr.Button("⏹️ Stop")
+            apply_button = gr.Button("🔄 Apply & Restart")
 
         status_box = gr.Textbox(
             label="Status",
@@ -524,6 +586,27 @@ def build_interface():
         )
         stop_button.click(
             fn=stop_pipeline,
+            outputs=status_box,
+        )
+        apply_button.click(
+            fn=apply_settings,
+            inputs=[
+                source_dropdown,
+                target_dropdown,
+                voice_dropdown,
+                silence_slider,
+            ],
+            outputs=status_box,
+        )
+
+        silence_slider.change(
+            fn=handle_silence_change,
+            inputs=[
+                source_dropdown,
+                target_dropdown,
+                voice_dropdown,
+                silence_slider,
+            ],
             outputs=status_box,
         )
 
