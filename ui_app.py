@@ -1,3 +1,4 @@
+import base64
 import json
 import threading
 from dataclasses import dataclass
@@ -435,6 +436,112 @@ def describe_default_voice(language_code: str) -> str:
     return describe_voice(default_voice)
 
 
+def render_language_card(code: str) -> str:
+    option = LANGUAGE_OPTIONS.get(code)
+    if not option:
+        return (
+            "<div class='info-card'>"
+            f"<div class='info-card__title'>{code}</div>"
+            "<div class='info-card__meta'>Metadata unavailable.</div>"
+            "</div>"
+        )
+
+    locales = ", ".join(option.locales) if option.locales else "n/a"
+    voice_count = len(option.voices)
+
+    card_parts = [
+        "<div class='info-card'>",
+        f"<div class='info-card__title'>{option.name} — {option.code}</div>",
+    ]
+    if option.native_name and option.native_name.lower() != option.name.lower():
+        card_parts.append(
+            f"<div class='info-card__subtitle'>{option.native_name}</div>"
+        )
+    card_parts.extend(
+        [
+            f"<div class='info-card__meta'><span>STT Locales:</span> {locales}</div>",
+            f"<div class='info-card__meta'><span>Voices available:</span> {voice_count}</div>",
+            "</div>",
+        ]
+    )
+    return "".join(card_parts)
+
+
+def render_voice_card(short_name: Optional[str]) -> str:
+    if not short_name:
+        return (
+            "<div class='info-card'>"
+            "<div class='info-card__title'>Voice unavailable</div>"
+            "<div class='info-card__meta'>Metadata unavailable.</div>"
+            "</div>"
+        )
+    voice = VOICES_BY_NAME.get(short_name)
+    if not voice:
+        return (
+            "<div class='info-card'>"
+            f"<div class='info-card__title'>{short_name}</div>"
+            "<div class='info-card__meta'>Metadata unavailable.</div>"
+            "</div>"
+        )
+    return (
+        "<div class='info-card'>"
+        f"<div class='info-card__title'>{voice.short_name} — {voice.name}</div>"
+        f"<div class='info-card__meta'>{voice.gender}, locale {voice.locale}</div>"
+        "</div>"
+    )
+
+
+def render_selected_voice(short_name: Optional[str]) -> str:
+    if not short_name:
+        return "<div class='selected-voice'><span>Selected voice:</span> unavailable.</div>"
+    voice = VOICES_BY_NAME.get(short_name)
+    if not voice:
+        return (
+            "<div class='selected-voice'>"
+            f"<span>Selected voice:</span> {short_name} (metadata unavailable)"
+            "</div>"
+        )
+    return (
+        "<div class='selected-voice'>"
+        f"<span>Selected voice:</span> {voice.short_name} — {voice.name} "
+        f"({voice.gender}, locale {voice.locale})"
+        "</div>"
+    )
+
+
+def render_default_voice_label(short_name: Optional[str]) -> str:
+    if not short_name:
+        return "<div class='default-voice'>Default voice: unavailable.</div>"
+    return (
+        f"<div class='default-voice'>Default voice: {short_name}</div>"
+    )
+
+
+def render_default_voice_views(language_code: str) -> Tuple[str, str, str]:
+    option = LANGUAGE_OPTIONS.get(language_code)
+    default_voice = option.voices[0].short_name if option and option.voices else None
+    return (
+        render_voice_card(default_voice),
+        render_selected_voice(default_voice),
+        render_default_voice_label(default_voice),
+    )
+
+
+def render_voice_views(short_name: Optional[str]) -> Tuple[str, str]:
+    return render_voice_card(short_name), render_selected_voice(short_name)
+
+
+def get_logo_source() -> str:
+    logo_path = Path(__file__).resolve().parent / "download.png"
+    if logo_path.exists():
+        try:
+            encoded_logo = base64.b64encode(logo_path.read_bytes()).decode("ascii")
+            return f"data:image/png;base64,{encoded_logo}"
+        except OSError:
+            pass
+    return "file=download.png"
+
+
 def apply_settings(
     source_lang: str,
     target_lang: str,
@@ -497,86 +604,470 @@ def build_interface():
     )
     default_voice = voice_choices[0] if voice_choices else None
 
-    with gr.Blocks(title="Speech Translation UI") as demo:
-        gr.Markdown(
-            "## Real-time Speech Translation\n"
-            "Run the Silero VAD -> Azure STT -> Azure Translator -> Azure TTS loop."
-        )
+    theme_path = Path(__file__).resolve().parent / "custom_theme.css"
+    if theme_path.exists():
+        custom_css = theme_path.read_text(encoding="utf-8")
+    else:
+        custom_css = """
+:root {
+    --protiviti-blue-900: #1B4E8E;
+    --protiviti-blue-800: #254B73;
+    --protiviti-blue-700: #1C355A;
+    --protiviti-blue-600: #4A6FA5;
+    --protiviti-blue-500: #6C7E92;
+    --surface-light: #f5f7fb;
+    --surface-white: #ffffff;
+    --text-primary: #5f6368;
+    --text-secondary: #7a7d80;
+    --shadow-soft: 0 12px 24px rgba(27, 78, 142, 0.08);
+    --radius-card: 12px;
+    --radius-element: 10px;
+    --transition-default: 0.25s ease;
+}
 
-        with gr.Row():
-            source_dropdown = gr.Dropdown(
-                choices=language_items,
-                value=default_source_code,
-                label="Source language (translation code)",
-                info="",
+body,
+.gradio-container {
+    background: var(--surface-light);
+    color: var(--text-primary);
+    font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+.app-container {
+    max-width: 960px;
+    margin: 0 auto 3rem auto;
+    gap: 0;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface-white);
+    border-radius: var(--radius-card);
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-soft);
+    margin-top: 1.5rem;
+}
+
+.top-bar__title h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 0 0.35rem 0;
+}
+
+.top-bar__title p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.top-bar__logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logo {
+    height: 36px;
+    width: auto;
+}
+
+.section-card {
+    background: var(--surface-white);
+    border-radius: var(--radius-card);
+    padding: 1.75rem 2rem;
+    box-shadow: var(--shadow-soft);
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.section-title {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    color: var(--text-primary);
+    margin: 0 !important;
+}
+
+.section-description {
+    color: var(--text-secondary);
+    margin: -0.25rem 0 0.5rem 0 !important;
+}
+
+.language-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.language-row > * {
+    flex: 1 1 280px;
+}
+
+.control-input select,
+.control-input textarea,
+.control-input input {
+    border-radius: var(--radius-element) !important;
+    border: 1px solid rgba(27, 78, 142, 0.15) !important;
+    box-shadow: none !important;
+}
+
+.default-voice {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.section-accordion {
+    border-radius: var(--radius-card) !important;
+    box-shadow: var(--shadow-soft);
+    background: var(--surface-white);
+    margin-top: 1.75rem;
+}
+
+.section-accordion > .label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.accordion-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem !important;
+}
+
+.info-card-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-card {
+    background: #f4f7fc;
+    border-radius: var(--radius-element);
+    padding: 1rem 1.25rem;
+    box-shadow: inset 0 1px 0 rgba(27, 78, 142, 0.05);
+    border: 1px solid rgba(27, 78, 142, 0.08);
+}
+
+.info-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.info-card__subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.info-card__meta {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0.15rem 0;
+}
+
+.info-card__meta span {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-right: 0.35rem;
+}
+
+.selected-voice {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.selected-voice span {
+    font-weight: 600;
+    margin-right: 0.35rem;
+    color: var(--text-primary);
+}
+
+.section-note {
+    color: var(--text-secondary);
+    margin-top: -0.75rem !important;
+}
+
+.silence-slider input[type="range"] {
+    accent-color: var(--protiviti-blue-900);
+}
+
+.action-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.action-row > * {
+    flex: 1 1 140px;
+}
+
+.btn-start button {
+    background-color: var(--protiviti-blue-900) !important;
+    color: #ffffff !important;
+    border-radius: var(--radius-element) !important;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-default);
+}
+
+.btn-start button:hover {
+    background-color: #225ca4 !important;
+}
+
+.btn-stop button {
+    background-color: var(--protiviti-blue-800) !important;
+    color: #ffffff !important;
+    border-radius: var(--radius-element) !important;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-default);
+}
+
+.btn-stop button:hover {
+    background-color: #2d5b8a !important;
+}
+
+.btn-hardstop button {
+    background-color: var(--protiviti-blue-700) !important;
+    color: #ffffff !important;
+    border-radius: var(--radius-element) !important;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-default);
+}
+
+.btn-hardstop button:hover {
+    background-color: #24426e !important;
+}
+
+.btn-apply button {
+    background-color: var(--protiviti-blue-600) !important;
+    color: #ffffff !important;
+    border-radius: var(--radius-element) !important;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-default);
+}
+
+.btn-apply button:hover {
+    background-color: #567cb4 !important;
+}
+
+.btn-restart button {
+    background-color: var(--protiviti-blue-500) !important;
+    color: #ffffff !important;
+    border-radius: var(--radius-element) !important;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-default);
+}
+
+.btn-restart button:hover {
+    background-color: #788a9f !important;
+}
+
+.output-section textarea,
+.status-field textarea {
+    border-radius: var(--radius-element) !important;
+    border: 1px solid rgba(27, 78, 142, 0.15) !important;
+    box-shadow: none !important;
+    background: #fdfefe !important;
+}
+
+.status-field textarea {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.output-field textarea {
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .top-bar__logo {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .language-row {
+        flex-direction: column;
+    }
+
+    .action-row {
+        flex-direction: column;
+    }
+}
+        """
+
+    default_voice_label = render_default_voice_label(default_voice)
+    initial_voice_card = render_voice_card(default_voice)
+    initial_voice_summary = render_selected_voice(default_voice)
+    logo_source = get_logo_source()
+
+    with gr.Blocks(
+        title="Speech to Speech Translator",
+        css=custom_css,
+    ) as demo:
+        with gr.Column(elem_classes=["app-container"]):
+            gr.HTML(
+                f"""
+                <div class="top-bar">
+                    <div class="top-bar__title">
+                        <h1>Speech to Speech Translator</h1>
+                        <p>Real-time Silero VAD -> Azure STT -> Azure Translator -> Azure TTS</p>
+                    </div>
+                    <div class="top-bar__logo">
+                        <img src="{logo_source}" alt="Protiviti logo" class="logo"/>
+                    </div>
+                </div>
+                """
             )
-            target_dropdown = gr.Dropdown(
-                choices=language_items,
-                value=default_target_code,
-                label="Target language (translation code)",
-                info="",
-            )
 
-        voice_dropdown = gr.Dropdown(
-            choices=voice_choices,
-            value=default_voice,
-            label="Azure neural voice",
-            info="Voices update based on target language.",
-            interactive=bool(voice_choices),
-        )
+            with gr.Column(elem_classes=["section-card", "inputs-section"]):
+                gr.Markdown(
+                    "### Input Controls",
+                    elem_classes=["section-title"],
+                )
+                gr.Markdown(
+                    "Run the Silero VAD -> Azure STT -> Azure Translator -> Azure TTS loop.",
+                    elem_classes=["section-description"],
+                )
+                with gr.Row(elem_classes=["language-row"]):
+                    source_dropdown = gr.Dropdown(
+                        choices=language_items,
+                        value=default_source_code,
+                        label="Source language (translation code)",
+                        interactive=True,
+                        elem_classes=["control-input"],
+                    )
+                    target_dropdown = gr.Dropdown(
+                        choices=language_items,
+                        value=default_target_code,
+                        label="Target language (translation code)",
+                        interactive=True,
+                        elem_classes=["control-input"],
+                    )
 
-        with gr.Row():
-            source_info = gr.Markdown(describe_language(default_source_code))
-            target_info = gr.Markdown(describe_language(default_target_code))
-            voice_info = gr.Markdown(describe_voice(default_voice))
+                voice_dropdown = gr.Dropdown(
+                    choices=voice_choices,
+                    value=default_voice,
+                    label="Azure neural voice",
+                    info="Voices update based on target language.",
+                    interactive=bool(voice_choices),
+                    elem_classes=["control-input"],
+                )
+                default_voice_display = gr.HTML(
+                    default_voice_label,
+                    elem_classes=["default-voice"],
+                )
 
-        silence_slider = gr.Slider(
-            minimum=0.5,
-            maximum=10.0,
-            value=DEFAULT_SILENCE_SECONDS,
-            step=0.5,
-            label="Silence duration (seconds)",
-            info="Silero waits this long after speech before finalizing a segment.",
-        )
+            with gr.Accordion(
+                "Language & Voice Details",
+                open=False,
+                elem_classes=["section-accordion"],
+            ):
+                gr.Markdown(
+                    "Metadata updates automatically as you adjust the configuration.",
+                    elem_classes=["accordion-description"],
+                )
+                with gr.Column(elem_classes=["info-card-stack"]):
+                    source_info = gr.HTML(
+                        render_language_card(default_source_code),
+                        elem_classes=["info-card-wrapper"],
+                    )
+                    target_info = gr.HTML(
+                        render_language_card(default_target_code),
+                        elem_classes=["info-card-wrapper"],
+                    )
+                    voice_info = gr.HTML(
+                        initial_voice_card,
+                        elem_classes=["info-card-wrapper"],
+                    )
 
-        with gr.Row():
-            start_button = gr.Button("Start", variant="primary")
-            stop_button = gr.Button("Stop")
-            hard_stop_button = gr.Button("Hard Stop", variant="stop")
-            apply_button = gr.Button("Apply & Restart")
+            with gr.Column(elem_classes=["section-card", "settings-section"]):
+                voice_summary = gr.HTML(
+                    initial_voice_summary,
+                    elem_classes=["selected-voice"],
+                )
+                gr.Markdown(
+                    "Voices update based on target language.",
+                    elem_classes=["section-note"],
+                )
+                silence_slider = gr.Slider(
+                    minimum=0.5,
+                    maximum=10.0,
+                    value=DEFAULT_SILENCE_SECONDS,
+                    step=0.5,
+                    label="Silence duration (seconds)",
+                    info="Silero waits this long after speech before finalizing a segment.",
+                    elem_classes=["silence-slider"],
+                )
+                with gr.Row(elem_classes=["action-row"]):
+                    start_button = gr.Button(
+                        "Start",
+                        variant="primary",
+                        elem_classes=["btn-start"],
+                    )
+                    stop_button = gr.Button(
+                        "Stop",
+                        elem_classes=["btn-stop"],
+                    )
+                    hard_stop_button = gr.Button(
+                        "Hard Stop",
+                        variant="stop",
+                        elem_classes=["btn-hardstop"],
+                    )
+                    apply_button = gr.Button(
+                        "Apply & Restart",
+                        elem_classes=["btn-apply"],
+                    )
 
-        status_box = gr.Textbox(
-            label="Status",
-            value="Stopped",
-            lines=1,
-            interactive=False,
-        )
-        transcription_box = gr.Textbox(
-            label="Live transcription",
-            lines=4,
-            interactive=False,
-            placeholder="Recognized text will appear here.",
-        )
-        translation_box = gr.Textbox(
-            label="Live translation",
-            lines=4,
-            interactive=False,
-            placeholder="Translated text will appear here.",
-        )
-        log_box = gr.Textbox(
-            label="Logs",
-            lines=12,
-            interactive=False,
-            placeholder="Pipeline logs will appear here.",
-        )
+            with gr.Column(elem_classes=["section-card", "output-section"]):
+                gr.Markdown(
+                    "### Real-Time Output",
+                    elem_classes=["section-title"],
+                )
+                status_box = gr.Textbox(
+                    label="Status",
+                    value="Stopped",
+                    lines=1,
+                    interactive=False,
+                    elem_classes=["status-field"],
+                )
+                transcription_box = gr.Textbox(
+                    label="Live transcription",
+                    lines=4,
+                    interactive=False,
+                    placeholder="Recognized text will appear here.",
+                    elem_classes=["output-field"],
+                )
+                translation_box = gr.Textbox(
+                    label="Live translation",
+                    lines=4,
+                    interactive=False,
+                    placeholder="Translated text will appear here.",
+                    elem_classes=["output-field"],
+                )
+                log_box = gr.Textbox(
+                    label="Logs",
+                    lines=12,
+                    interactive=False,
+                    placeholder="Pipeline logs will appear here.",
+                    elem_classes=["output-field"],
+                )
 
         source_dropdown.change(
-            fn=describe_language,
+            fn=render_language_card,
             inputs=source_dropdown,
             outputs=source_info,
         )
         target_dropdown.change(
-            fn=describe_language,
+            fn=render_language_card,
             inputs=target_dropdown,
             outputs=target_info,
         )
@@ -586,14 +1077,14 @@ def build_interface():
             outputs=voice_dropdown,
         )
         target_dropdown.change(
-            fn=describe_default_voice,
+            fn=render_default_voice_views,
             inputs=target_dropdown,
-            outputs=voice_info,
+            outputs=[voice_info, voice_summary, default_voice_display],
         )
         voice_dropdown.change(
-            fn=describe_voice,
+            fn=render_voice_views,
             inputs=voice_dropdown,
-            outputs=voice_info,
+            outputs=[voice_info, voice_summary],
         )
 
         start_button.click(
