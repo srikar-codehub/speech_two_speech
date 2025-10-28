@@ -194,64 +194,113 @@ body,
     flex: 1 1 140px;
 }
 
-.btn-start button {
-    background-color: var(--protiviti-blue-900) !important;
+.btn-start button,
+.btn-start button.gr-button,
+.btn-start button.gr-button-primary {
+    background: #1B4E8E !important;
+    background-color: #1B4E8E !important;
+    background-image: none !important;
     color: #ffffff !important;
     border-radius: var(--radius-element) !important;
+    border: none !important;
+    border-color: #1B4E8E !important;
     box-shadow: var(--shadow-soft);
     transition: var(--transition-default);
 }
 
-.btn-start button:hover {
-    background-color: #225ca4 !important;
+.btn-start button:hover,
+.btn-start button.gr-button:hover,
+.btn-start button.gr-button-primary:hover {
+    background: #215ea8 !important;
+    background-color: #215ea8 !important;
 }
 
-.btn-stop button {
-    background-color: var(--protiviti-blue-800) !important;
+.btn-stop button,
+.btn-stop button.gr-button,
+.btn-stop button.gr-button-secondary,
+.btn-stop button.gr-button-primary {
+    background: #254B73 !important;
+    background-color: #254B73 !important;
+    background-image: none !important;
     color: #ffffff !important;
     border-radius: var(--radius-element) !important;
+    border: none !important;
+    border-color: #254B73 !important;
     box-shadow: var(--shadow-soft);
     transition: var(--transition-default);
 }
 
-.btn-stop button:hover {
-    background-color: #2d5b8a !important;
+.btn-stop button:hover,
+.btn-stop button.gr-button:hover,
+.btn-stop button.gr-button-secondary:hover,
+.btn-stop button.gr-button-primary:hover {
+    background: #2e5f8f !important;
+    background-color: #2e5f8f !important;
 }
 
-.btn-hardstop button {
-    background-color: var(--protiviti-blue-700) !important;
+.btn-hardstop button,
+.btn-hardstop button.gr-button,
+.btn-hardstop button.gr-button-secondary {
+    background: #1C355A !important;
+    background-color: #1C355A !important;
+    background-image: none !important;
     color: #ffffff !important;
     border-radius: var(--radius-element) !important;
+    border: none !important;
+    border-color: #1C355A !important;
     box-shadow: var(--shadow-soft);
     transition: var(--transition-default);
 }
 
-.btn-hardstop button:hover {
-    background-color: #24426e !important;
+.btn-hardstop button:hover,
+.btn-hardstop button.gr-button:hover,
+.btn-hardstop button.gr-button-secondary:hover {
+    background: #284876 !important;
+    background-color: #284876 !important;
 }
 
-.btn-apply button {
-    background-color: var(--protiviti-blue-600) !important;
+.btn-apply button,
+.btn-apply button.gr-button,
+.btn-apply button.gr-button-secondary,
+.btn-apply button.gr-button-primary {
+    background: #4A6FA5 !important;
+    background-color: #4A6FA5 !important;
+    background-image: none !important;
     color: #ffffff !important;
     border-radius: var(--radius-element) !important;
+    border: none !important;
+    border-color: #4A6FA5 !important;
     box-shadow: var(--shadow-soft);
     transition: var(--transition-default);
 }
 
-.btn-apply button:hover {
-    background-color: #567cb4 !important;
+.btn-apply button:hover,
+.btn-apply button.gr-button:hover,
+.btn-apply button.gr-button-secondary:hover,
+.btn-apply button.gr-button-primary:hover {
+    background: #5c81b6 !important;
+    background-color: #5c81b6 !important;
 }
 
-.btn-restart button {
-    background-color: var(--protiviti-blue-500) !important;
+.btn-restart button,
+.btn-restart button.gr-button,
+.btn-restart button.gr-button-secondary {
+    background: #4A6FA5 !important;
+    background-color: #4A6FA5 !important;
+    background-image: none !important;
     color: #ffffff !important;
     border-radius: var(--radius-element) !important;
+    border: none !important;
+    border-color: #4A6FA5 !important;
     box-shadow: var(--shadow-soft);
     transition: var(--transition-default);
 }
 
-.btn-restart button:hover {
-    background-color: #788a9f !important;
+.btn-restart button:hover,
+.btn-restart button.gr-button:hover,
+.btn-restart button.gr-button-secondary:hover {
+    background: #5c81b6 !important;
+    background-color: #5c81b6 !important;
 }
 
 .output-section textarea,
