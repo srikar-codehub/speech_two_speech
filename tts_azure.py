@@ -45,6 +45,28 @@ class AzureTTS:
 
         print(f"[AzureTTS] Initialized ({language}, {voice_name})")
 
+    def configure_voice(self, language: str, voice_name: str) -> None:
+        """
+        Reconfigures the synthesizer to use a different language/voice combination.
+        """
+        language = language or self.speech_config.speech_synthesis_language
+        voice_name = voice_name or self.speech_config.speech_synthesis_voice_name
+
+        have_same_voice = (
+            self.speech_config.speech_synthesis_language == language
+            and self.speech_config.speech_synthesis_voice_name == voice_name
+        )
+        if have_same_voice:
+            return
+
+        self.speech_config.speech_synthesis_language = language
+        self.speech_config.speech_synthesis_voice_name = voice_name
+        self.synthesizer = speechsdk.SpeechSynthesizer(
+            speech_config=self.speech_config,
+            audio_config=self.audio_config,
+        )
+        print(f"[AzureTTS] Reconfigured ({language}, {voice_name})")
+
     def speak(self, text: str) -> None:
         """
         Speaks the provided text aloud.

@@ -1,17 +1,19 @@
-# translate_azure.py
 import os
+from typing import Optional
+
 import requests
 from dotenv import load_dotenv
 
+
 class AzureTranslator:
-    def __init__(self, target_lang="fr"):
+    def __init__(self, target_lang: str = "fr") -> None:
         """
-        Initializes the Azure Translator client.
-        Requires in .env:
+        Initializes the Azure Translator client using environment variables.
+
+        Expected .env values:
             AZURE_TRANSLATE_KEY
             AZURE_TRANSLATE_ENDPOINT
-        Args:
-            target_lang: Target translation language code (e.g. 'fr', 'es', 'de')
+            AZURE_TRANSLATE_REGION (optional)
         """
         load_dotenv()
         self.endpoint = os.getenv("AZURE_TRANSLATE_ENDPOINT")
@@ -19,17 +21,27 @@ class AzureTranslator:
         self.region = os.getenv("AZURE_TRANSLATE_REGION")  # optional
 
         if not self.endpoint or not self.key:
-            raise ValueError("❌ Missing AZURE_TRANSLATE_KEY or AZURE_TRANSLATE_ENDPOINT in .env")
+            raise ValueError("Missing AZURE_TRANSLATE_KEY or AZURE_TRANSLATE_ENDPOINT in .env")
 
-        self.target_lang = target_lang
         self.path = "/translate?api-version=3.0"
+        self.target_lang = target_lang
+        self._update_url()
+
+    def _update_url(self) -> None:
         self.url = f"{self.endpoint}{self.path}&to={self.target_lang}"
 
-    def translate_text(self, text):
+    def set_target_language(self, target_lang: str) -> None:
         """
-        Translates the given text using Azure Translator.
-        Returns:
-            str: translated text or None
+        Updates the target translation language without recreating the client.
+        """
+        if not target_lang or target_lang == self.target_lang:
+            return
+        self.target_lang = target_lang
+        self._update_url()
+
+    def translate_text(self, text: str) -> Optional[str]:
+        """
+        Translates the provided text. Returns the translated string or None on failure.
         """
         if not text or not text.strip():
             return None
@@ -38,18 +50,18 @@ class AzureTranslator:
             "Ocp-Apim-Subscription-Key": self.key,
             "Content-Type": "application/json",
         }
-
         if self.region:
             headers["Ocp-Apim-Subscription-Region"] = self.region
 
         body = [{"text": text}]
+
         try:
             response = requests.post(self.url, headers=headers, json=body, timeout=10)
             response.raise_for_status()
             result = response.json()
             translated = result[0]["translations"][0]["text"]
-            print(f"🌍 Translated ({self.target_lang}): {translated}")
+            print(f"[AzureTranslator] Translated ({self.target_lang}): {translated}")
             return translated
-        except Exception as e:
-            print(f"⚠️ Azure Translate error: {e}")
+        except Exception as exc:  # pragma: no cover - network dependent
+            print(f"[AzureTranslator] Error: {exc}")
             return None

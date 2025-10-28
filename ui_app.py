@@ -3,6 +3,7 @@ import json
 import threading
 from dataclasses import dataclass
 from pathlib import Path
+import time
 from typing import Dict, List, Optional, Tuple
 
 try:
@@ -38,6 +39,17 @@ class LanguageOption:
     locales: List[str]
     voices: List[VoiceOption]
     default_locale: str
+
+
+@dataclass
+class _PipelineClients:
+    stt: AzureSTT
+    translator: AzureTranslator
+    tts: AzureTTS
+    stt_locale: str
+    target_code: str
+    voice_locale: str
+    voice_name: str
 
 
 DEFAULT_SOURCE = "en"
@@ -132,6 +144,8 @@ class SpeechTranslationController:
         self._max_log_lines = 200
         self._state_lock = threading.Lock()
         self._current_tts: Optional[AzureTTS] = None
+        self._client_bundle: Optional[_PipelineClients] = None
+        self._sleep_interval = 0.05
 
     def start(
         self,
@@ -189,6 +203,128 @@ class SpeechTranslationController:
             self._thread.start()
             return "Initializing..."
 
+    def _prepare_clients(
+        self,
+        source_option: LanguageOption,
+        target_option: LanguageOption,
+        voice_option: VoiceOption,
+    ) -> _PipelineClients:
+        stt_locale = source_option.default_locale or source_option.locales[0]
+        target_code = target_option.code
+        voice_locale = voice_option.locale
+        voice_name = voice_option.short_name
+
+        bundle = self._client_bundle
+
+        if bundle is None:
+            stt = AzureSTT()
+            translator = AzureTranslator(target_lang=target_code)
+            tts = AzureTTS(language=voice_locale, voice_name=voice_name)
+        else:
+            stt = bundle.stt
+            translator = bundle.translator
+            tts = bundle.tts
+
+            if stt.speech_config.speech_recognition_language != stt_locale:
+                stt.speech_config.speech_recognition_language = stt_locale
+
+            current_target = getattr(translator, "target_lang", None)
+            if current_target != target_code:
+                if hasattr(translator, "set_target_language"):
+                    translator.set_target_language(target_code)
+                else:  # defensive fallback
+                    translator = AzureTranslator(target_lang=target_code)
+
+            current_voice_locale = getattr(tts.speech_config, "speech_synthesis_language", None)
+            current_voice_name = getattr(tts.speech_config, "speech_synthesis_voice_name", None)
+            if current_voice_locale != voice_locale or current_voice_name != voice_name:
+                if hasattr(tts, "configure_voice"):
+                    tts.configure_voice(language=voice_locale, voice_name=voice_name)
+                else:  # defensive fallback
+                    tts = AzureTTS(language=voice_locale, voice_name=voice_name)
+
+        bundle = _PipelineClients(
+            stt=stt,
+            translator=translator,
+            tts=tts,
+            stt_locale=stt_locale,
+            target_code=target_code,
+            voice_locale=voice_locale,
+            voice_name=voice_name,
+        )
+        self._client_bundle = bundle
+        return bundle
+
+    def _should_stop(self) -> bool:
+        return self._stop_event.is_set()
+
+    def _sleep_briefly(self) -> None:
+        time.sleep(self._sleep_interval)
+
+    def _transcribe_with_retry(
+        self,
+        stt: AzureSTT,
+        speech_chunk,
+        sample_rate: int,
+    ) -> Optional[str]:
+        for attempt in (1, 2):
+            try:
+                text = stt.transcribe_chunk(speech_chunk, sample_rate=sample_rate)
+            except Exception as exc:
+                self._append_log(f"STT error (attempt {attempt}): {exc}")
+                text = None
+
+            if text:
+                return text
+
+            if attempt == 1:
+                self._append_log("Retrying Azure STT once...")
+                self._sleep_briefly()
+        return None
+
+    def _translate_with_retry(
+        self,
+        translator: AzureTranslator,
+        text: str,
+    ) -> Optional[str]:
+        for attempt in (1, 2):
+            translated = translator.translate_text(text)
+            if translated:
+                return translated
+            if attempt == 1:
+                self._append_log("Retrying Azure Translator once...")
+                self._sleep_briefly()
+        return None
+
+    def _speak_with_retry(
+        self,
+        tts: AzureTTS,
+        text: str,
+    ) -> bool:
+        for attempt in (1, 2):
+            try:
+                tts.speak(text)
+                return True
+            except Exception as exc:
+                self._append_log(f"TTS playback error (attempt {attempt}): {exc}")
+                if attempt == 1:
+                    self._sleep_briefly()
+                    continue
+                try:
+                    tts.stop()
+                except Exception:
+                    pass
+        return False
+
+    def _close_vad_stream(self) -> None:
+        if self._vad_stream:
+            try:
+                self._vad_stream.close()
+            except Exception:
+                pass
+            finally:
+                self._vad_stream = None
+
     def _stop_pipeline(self, force: bool) -> str:
         with self._thread_lock:
             thread = self._thread
@@ -227,7 +363,6 @@ class SpeechTranslationController:
         with self._thread_lock:
             self._thread = None
 
-        self._append_log("Pipeline stopped.")
         self._set_status("Stopped")
         return "Stopped"
 
@@ -254,76 +389,112 @@ class SpeechTranslationController:
         voice_option: VoiceOption,
         silence_seconds: float,
     ) -> None:
+        clients: Optional[_PipelineClients] = None
+        vad: Optional[SileroVADHelper] = None
         try:
+            clients = self._prepare_clients(source_option, target_option, voice_option)
             vad = SileroVADHelper(silence_duration=silence_seconds)
-            stt = AzureSTT()
-            stt_language = source_option.default_locale or source_option.locales[0]
-            stt.speech_config.speech_recognition_language = stt_language
+            stt_language = clients.stt_locale
 
-            translator = AzureTranslator(target_lang=target_option.code)
-            tts = AzureTTS(
-                language=voice_option.locale,
-                voice_name=voice_option.short_name,
-            )
             with self._thread_lock:
-                self._current_tts = tts
+                self._current_tts = clients.tts
 
             self._append_log(
                 "Components initialized "
-                f"(STT {stt_language}, translation {target_option.code}, "
-                f"TTS {voice_option.short_name})."
+                f"(STT {stt_language}, translation {clients.target_code}, "
+                f"TTS {clients.voice_name})."
             )
             self._set_status("Listening...")
+            self._sleep_briefly()
 
+            self._append_log("Silero VAD ready; awaiting speech segments.")
             self._vad_stream = vad.start()
 
             for speech_chunk in self._vad_stream:
-                if self._stop_event.is_set():
+                if self._should_stop():
+                    self._append_log("Stop signal received; exiting listening loop.")
                     break
 
                 self._set_status("Transcribing...")
-                text = stt.transcribe_chunk(speech_chunk, sample_rate=vad.sample_rate)
+                text = self._transcribe_with_retry(
+                    clients.stt,
+                    speech_chunk,
+                    vad.sample_rate,
+                )
                 if not text:
-                    self._append_log("No transcription returned.")
+                    self._append_log("No transcription returned after retries.")
                     self._set_status("Listening...")
+                    self._sleep_briefly()
                     continue
 
                 self._record_transcription(text)
                 self._append_log(f"Recognized text: {text}")
 
+                if self._should_stop():
+                    self._append_log("Stop signal detected before translation stage.")
+                    break
+
                 self._set_status("Translating...")
-                translated = translator.translate_text(text)
+                translated = self._translate_with_retry(clients.translator, text)
                 if not translated:
-                    self._append_log("Translation failed or empty.")
+                    self._append_log("Translation failed or returned empty result.")
                     self._set_status("Listening...")
+                    self._sleep_briefly()
                     continue
 
                 self._record_translation(translated)
                 self._append_log(f"Translation: {translated}")
 
-                if self._stop_event.is_set():
+                if self._should_stop():
+                    self._append_log("Stop signal detected before TTS stage.")
                     break
 
                 self._set_status("Speaking...")
-                tts.speak(translated)
+                if not self._speak_with_retry(clients.tts, translated):
+                    self._append_log("TTS playback failed after retries.")
+                    self._set_status("Listening...")
+                    self._sleep_briefly()
+                    continue
+
                 self._append_log("TTS playback completed.")
                 self._set_status("Listening...")
+                if self._should_stop():
+                    break
+                self._sleep_briefly()
 
         except Exception as exc:
             self._append_log(f"Pipeline error: {exc}")
             self._set_status("Error")
         finally:
             self._stop_event.clear()
-            self._vad_stream = None
-            self._set_status("Stopped")
+            self._close_vad_stream()
+            if vad and hasattr(vad, "stop"):
+                try:
+                    vad.stop()  # type: ignore[attr-defined]
+                except Exception:
+                    pass
+
+            if clients and not self._should_stop():
+                try:
+                    clients.tts.stop()
+                except Exception:
+                    pass
+
             with self._thread_lock:
                 self._current_tts = None
                 if threading.current_thread() is self._thread:
                     self._thread = None
 
+            self._set_status("Stopped")
+            self._append_log("Pipeline stopped.")
+
     def _append_log(self, message: str) -> None:
         with self._state_lock:
-            self._log_lines.append(message)
+            timestamp = time.strftime("%H:%M:%S")
+            entry = f"[{timestamp}] {message}"
+            self._log_lines.append(entry)
+            if len(self._log_lines) > self._max_log_lines:
+                self._log_lines = self._log_lines[-self._max_log_lines:]
 
     def _record_transcription(self, text: str) -> None:
         with self._state_lock:
